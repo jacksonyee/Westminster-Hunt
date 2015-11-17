@@ -1,17 +1,44 @@
 <h2>Categories</h2>
 <ul data-role="listview" id="mission-categories" class="ui-nodisc-icon ui-alt-icon">
-  <li><a href="#">Campuses</a></li>
-  <li><a href="#">Essentials</a></li>
-  <li><a href="#">People</a></li>
-  <li><a href="#">Study</a></li>
+  <li><a href="#" view="campuses">Campuses</a></li>
+  <li><a href="#" view="essentials">Essentials</a></li>
+  <li><a href="#" view="people">People</a></li>
+  <li><a href="#" view="study">Study</a></li>
 </ul>
 <table id="nav-buttons">
   <tr>
-    <td>Newsletter</td>
-    <td>Guide</td>
+    <td view="newsletter">Newsletter</td>
+    <td view="guide">Guide</td>
   </tr>
   <tr>
-    <td>Map of Campuses</td>
-    <td>Favourites</td>
+    <td view="map">Map of Campuses</td>
+    <td view="favourites">Favourites</td>
   </tr>
 </table>
+
+<script>
+  // function to dynamically load new pages using AJAX
+  loadPage = function() {
+    pageName = $(this).attr("view");
+    console.log(pageName);
+
+    // loadOff page listeners
+
+    // load ajax;
+    $.ajax({
+      url: "views/" + pageName + ".html"
+    })
+    .done(function( data ) {
+      $('#content-frame').html(data);
+    });
+  };
+  // assigning listeners
+  $('#mission-categories li a').click(loadPage);
+  $("#nav-buttons tr td").click(loadPage);
+
+
+  // loadOff to be run when the view is changed, to shut down listeners
+  loadOffPanned = function() {
+    $('#mission-categories li a').unbind();
+  };
+</script>

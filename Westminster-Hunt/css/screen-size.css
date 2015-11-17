@@ -19,8 +19,8 @@
     width: 74% !important;
   }
   /* pannel tablet */
-  #content{
-    width: 69%;
+  #content-frame{
+    width: 68%;
     right: 0;
     bottom: 0;
     top: 2.8em;
@@ -35,7 +35,7 @@
     border-right: 2px solid #eee;
   }
   #panel-tablet{
-    padding: 1em;
+    padding: 1%;
   }
   #panel-tablet h2{
     margin: 0 0 .5em 0;
