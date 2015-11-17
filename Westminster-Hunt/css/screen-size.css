@@ -3,15 +3,61 @@
   div.ui-content{
     width: 91%;
   }
+  #content{
+    width: 100%;
+  }
   .tablet-elem{
     display: none !important;
   }
 }
-/* tablet */
+/* pannel tablet */
 @media screen and (min-width: 737px) {
   div.ui-content{
-    width: 74%;
+    width: 100%;
   }
+  .content{
+    width: 74% !important;
+  }
+  /* pannel tablet */
+  #content{
+    width: 69%;
+    right: 0;
+    bottom: 0;
+    top: 2.8em;
+    position: absolute;
+  }
+  #panel-tablet{
+    width: 30%;
+    left: 0;
+    bottom: 0;
+    top: 2.8em;
+    position: absolute;
+    border-right: 2px solid #eee;
+  }
+  #panel-tablet{
+    padding: 1em;
+  }
+  #panel-tablet h2{
+    margin: 0 0 .5em 0;
+  }
+  #panel-tablet ul li a{
+    padding-left: 2em;
+  }
+  #mission-categories{
+    margin-top: 0 !important;
+  }
+  #nav-buttons{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    left: 0;
+    right: 0;
+    text-align: center;
+  }
+  #nav-buttons tr td{
+    width: 50%;
+  }
+  /* end pannel tablet */
   .phone-elem{
     display: none !important;
   }
