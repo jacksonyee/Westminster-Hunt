@@ -1,6 +1,9 @@
 body{
   font-family: system, -apple-system, ".SFNSDisplay-Regular", HelveticaNeue, LucidaGrande;
 }
+.ui-overlay-a, .ui-page-theme-a, .ui-page-theme-a .ui-panel-wrapper, .ui-page-theme-a .ui-btn, html .ui-bar-a .ui-btn, html .ui-body-a .ui-btn, html body .ui-group-theme-a .ui-btn, html head+body .ui-btn.ui-btn-a, .ui-page-theme-a .ui-btn:visited, html .ui-bar-a .ui-btn:visited, html .ui-body-a .ui-btn:visited, html body .ui-group-theme-a .ui-btn:visited, html head+body .ui-btn.ui-btn-a:visited{
+  text-shadow: none !important;
+}
 
 .black-bg{
   background: #000 !important;
@@ -33,8 +36,8 @@ div.ui-content {
   margin: 0 auto;
 }
 
-div.ui-content p{
-  width: 100%;
+div.ui-content div.home-box{
+  margin: 1em 0;
   padding: .5em 1em;
   color: #fff;
   background-color: rgba(0,0,0,.86);
@@ -56,6 +59,15 @@ div.ui-content p{
 
 .ui-header {
   border-color: #173455 !important;
+}
+
+a.active-btn{
+  background-color: #2f76d3 !important;
+  color: white !important;
+}
+
+td.active-btn{
+  color: #2f76d3 !important;
 }
 
 .ui-header h1{
