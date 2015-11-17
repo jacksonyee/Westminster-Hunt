@@ -1,0 +1,70 @@
+body{
+  font-family: system, -apple-system, ".SFNSDisplay-Regular", HelveticaNeue, LucidaGrande;
+}
+
+.black-bg{
+  background: #000 !important;
+}
+.blue-bg {
+  background: #2f76d3 !important;
+}
+.green-bg {
+  background: #72cd28 !important;
+}
+.orange-bg {
+  background: #ef8d22 !important;
+}
+.red-bg {
+  background: #c92D39 !important;
+}
+
+.home {
+  background: url(http://www.westminster.ac.uk/__data/assets/image/0003/315912/homepage_bg_2014-repeat.png?v=0.1.9);
+  background-color: #fff;
+  background-repeat: repeat-x;
+  background-attachment: fixed;
+  background-size: Auto 90%;
+  background-origin: initial;
+  background-position-x: 50%;
+  background-position-y: 100%;
+}
+div.ui-content {
+  padding: 0;
+  margin: 0 auto;
+}
+
+div.ui-content p{
+  width: 100%;
+  padding: .5em 1em;
+  color: #fff;
+  background-color: rgba(0,0,0,.86);
+  border-radius: 4px;
+}
+
+.my-btn {
+  display: block;
+  text-align: center;
+  position: relative;
+  padding: .5em 5px;
+  margin: 1em 5px;
+  color: white;
+  background: #2f76d3;
+  width: 6em;
+  border-radius: 12px;
+  border-color: #fff;
+}
+
+.ui-header {
+  border-color: #173455 !important;
+}
+
+.ui-header h1{
+  color: white;
+  text-shadow: none;
+}
+
+#start-btn{
+  position: fixed;
+  right: 1.5em;
+  bottom: .5em;
+}

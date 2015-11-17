@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<title>My Page</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+	<link rel="stylesheet" href="css/general.css" />
+	<link rel="stylesheet" href="css/screen-size.css" />
+
+	<script type="text/javascript" src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+
+  <script>
+    // jQ mobile doesnt return an eroor when server is not present
+    $(document).bind('mobileinit',function(){
+        $.mobile.changePage.defaults.changeHash = false;
+        $.mobile.hashListeningEnabled = false;
+        $.mobile.pushStateEnabled = false;
+    });
+  </script>
+
+	<script type="text/javascript" src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+
+</head>
+<body>
+
+<div data-role="page" class="home">
+
+	<div class="blue-bg" data-role="header" data-position="fixed" data-hide-during-focus="">
+		<h1 class="heading-title">Westminster Hunt</h1>
+	</div><!-- /header -->
+
+	<div data-role="content">
+		<p class="hello" style="height: 120px">Hello world</p>
+  	<p class="hello" style="height: 240px">Hello world</p>
+    <p class="hello" style="height: 360px">Hello world</p>
+    <a href="#generic"><div id="start-btn" class="my-btn green-bg">Start</div></a>
+	</div><!-- /content -->
+
+</div><!-- /page Initial -->
+
+<div data-role="page" id="generic">
+
+	<div class="blue-bg" data-role="header" data-position="fixed" data-hide-during-focus="">
+		<a href="#defaultpanel" id="defaultpanel-button" class="phone-elem" data-icon="bars" data-iconpos="notext"></a>
+		<h1 class="heading-title">Westminster Hunt</h1>
+	</div><!-- /header -->
+
+	<div data-role="content">
+		<div id="#panel-tablet" class="tablet-elem"></div>
+	</div><!-- /content -->
+
+	<!-- defaultpanel  -->
+  <div data-role="panel" id="defaultpanel" data-theme="a" data-display="overlay">
+  </div><!-- /defaultpanel -->
+
+</div><!-- /page Initial -->
+
+</body>
+
+<script>
+// disables hiding the title
+  $(function(){
+    $.mobile.fixedToolbars.setTouchToggleEnabled(false);
+  });
+
+	width = window.innerWidth;
+	if (width >= 737){
+		// tablet
+		console.log("tablet");
+		$.ajax({
+		  url: "views/panel-contents.html"
+		})
+	  .done(function( data ) {
+			$('#panel-tablet').html(data);
+	  });
+		// load AJAX for everything
+	}
+	else {
+		// phone
+		console.log("phone");
+	}
+	console.log(width);
+</script>
+</html>
