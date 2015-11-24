@@ -45,7 +45,7 @@
         localStorage.setItem(categoryName, JSON.stringify(data));
         retrievedCategory = data;
         // dynamically create content
-        displayQuestion(1, data);
+        loadQuestion(1, data);
       });
     }
     else {
@@ -54,7 +54,7 @@
       console.log(retrievedCategory);
       // dynamically create content
 
-      displayQuestion(1, retrievedCategory);
+      loadQuestion(1, retrievedCategory);
     }
   };
   loadView = function() {
@@ -89,6 +89,17 @@
 
   changePageTitle = function(newName) {
     $('#title').html(newName);
+  }
+
+  loadQuestion = function(id, data) {
+    $.ajax({
+      url: "views/questionPage.html"
+    })
+    .done(function( data ) {
+      changePageTitle("Question");
+      $('#content-frame').html(data);
+      //displayQuestion(id, data);
+    });
   }
 
   displayQuestion = function(id, data) {

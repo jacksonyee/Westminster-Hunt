@@ -107,3 +107,18 @@ td.active-btn{
     height: 84.8%;
     left: 5%;
 }
+
+/*
+button animations
+*/
+div.answer-btn{
+  -webkit-transition: all 0.1s ease-out;
+  -moz-transition: all 0.1s ease-out;
+  -ms-transition: all 0.1s ease-out; /* IE10 is actually unprefixed */
+  -o-transition: all 0.1s ease-out;
+  transition: all 0.1s ease-out;
+}
+div.answer-btn:active{
+  background: white !important;
+  color: #2f76d3 !important;
+}
