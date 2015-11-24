@@ -19,8 +19,11 @@
 <script>
   // function to dynamically load new pages using AJAX
   loadCategory = function() {
+
     categoryName = $(this).attr("view");
     console.log("c " + categoryName);
+
+
 
     // make element active
     $('.active-btn').addClass('ui-alt-icon').removeClass('active-btn');
@@ -30,26 +33,29 @@
 
     // load ajax
     retrievedCategory = null;
-    if (localStorage.getItem('categoryName') == null)
+    if (localStorage.getItem(categoryName) == null)
     {
       $.ajax({
-        url: "model/" + categoryName + ".json"
+        url: "models/" + categoryName + ".json"
       })
       .done(function( data ) {
+        console.log("data");
+        console.log(data);
         // save JSON as string in localStorage
-        localStorage.setItem('categoryName', JSON.stringify(data));
+        localStorage.setItem(categoryName, JSON.stringify(data));
         retrievedCategory = data;
+        // dynamically create content
+        displayQuestion(1, data);
       });
     }
     else {
-      retrievedCategory = JSON.parse(localStorage.getItem('categoryName'));
+      retrievedCategory = JSON.parse(localStorage.getItem(categoryName));
+      console.log("saved");
+      console.log(retrievedCategory);
+      // dynamically create content
+
+      displayQuestion(1, retrievedCategory);
     }
-
-    console.log('retrievedCategory: ', retrievedCategory);
-
-    // make it JSON
-
-    // dynamically create content
   };
   loadView = function() {
     viewName = $(this).attr("view");
@@ -83,5 +89,22 @@
 
   changePageTitle = function(newName) {
     $('#title').html(newName);
+  }
+
+  displayQuestion = function(id, data) {
+    if (id < 1) return;
+    currentQuestion = eval("data.questions.q" + id);
+    page = id + '<br>';
+    page += currentQuestion.title;
+    page += "<br>";
+    page += currentQuestion.answers.a;
+    page += "<br>";
+    page += currentQuestion.answers.b;
+    page += "<br>";
+    page += currentQuestion.answers.c;
+    page += "<br>";
+    page += currentQuestion.answers.d;
+    page += "<br>";
+    $('#content-frame').html(page);
   }
 </script>
