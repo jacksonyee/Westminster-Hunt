@@ -1,18 +1,18 @@
 <h2>Categories</h2>
 <ul data-role="listview" id="mission-categories" class="ui-nodisc-icon">
-  <li><a href="#" view="campuses" class="ui-alt-icon">Campuses</a></li>
-  <li><a href="#" view="essentials" class="ui-alt-icon">Essentials</a></li>
-  <li><a href="#" view="people" class="ui-alt-icon">People</a></li>
-  <li><a href="#" view="study" class="ui-alt-icon">Study</a></li>
+  <li><a href="#" view="Campuses" class="ui-alt-icon">Campuses</a></li>
+  <li><a href="#" view="Essentials" class="ui-alt-icon">Essentials</a></li>
+  <li><a href="#" view="People" class="ui-alt-icon">People</a></li>
+  <li><a href="#" view="Study" class="ui-alt-icon">Study</a></li>
 </ul>
 <table id="nav-buttons">
   <tr>
-    <td view="newsletter">Newsletter</td>
-    <td view="guide">Guide</td>
+    <td view="Newsletter">Newsletter</td>
+    <td view="Guide">Guide</td>
   </tr>
   <tr>
-    <td view="map">Map of Campuses</td>
-    <td view="favourites">Favourites</td>
+    <td view="Map">Map of Campuses</td>
+    <td view="Favourites">Favourites</td>
   </tr>
 </table>
 
@@ -20,7 +20,7 @@
   // function to dynamically load new pages using AJAX
   loadCategory = function() {
     categoryName = $(this).attr("view");
-    console.log(categoryName);
+    console.log("c " + categoryName);
 
     // make element active
     $('.active-btn').addClass('ui-alt-icon').removeClass('active-btn');
@@ -53,7 +53,7 @@
   };
   loadView = function() {
     viewName = $(this).attr("view");
-    console.log(viewName);
+    console.log("v " + viewName);
 
     // make element active
     $('.active-btn').addClass('ui-alt-icon').removeClass('active-btn');
@@ -66,6 +66,7 @@
       url: "views/" + viewName + ".html"
     })
     .done(function( data ) {
+      changePageTitle(viewName);
       $('#content-frame').html(data);
     });
   };
@@ -79,4 +80,8 @@
   loadOffPanned = function() {
     $('#mission-categories li a').unbind();
   };
+
+  changePageTitle = function(newName) {
+    $('#title').html(newName);
+  }
 </script>

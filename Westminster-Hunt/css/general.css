@@ -80,3 +80,30 @@ td.active-btn{
   right: 1.5em;
   bottom: .5em;
 }
+
+#panelScore {
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+  font-size: 1em;
+  padding: .5em;
+  color: gold;
+}
+
+.videowrapper {
+    float: none;
+    clear: both;
+    width: 100%;
+    position: relative;
+    padding-bottom: 56.25%;
+    padding-top: 25px;
+    height: 0;
+    margin-top: 3em;
+}
+.videowrapper iframe {
+  position: absolute;
+    top: 0;
+    width: 90%;
+    height: 84.8%;
+    left: 5%;
+}
