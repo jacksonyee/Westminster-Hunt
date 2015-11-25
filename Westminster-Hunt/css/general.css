@@ -1,15 +1,20 @@
+/* overwrites */
 body{
   font-family: system, -apple-system, ".SFNSDisplay-Regular", HelveticaNeue, LucidaGrande;
 }
 .ui-overlay-a, .ui-page-theme-a, .ui-page-theme-a .ui-panel-wrapper, .ui-page-theme-a .ui-btn, html .ui-bar-a .ui-btn, html .ui-body-a .ui-btn, html body .ui-group-theme-a .ui-btn, html head+body .ui-btn.ui-btn-a, .ui-page-theme-a .ui-btn:visited, html .ui-bar-a .ui-btn:visited, html .ui-body-a .ui-btn:visited, html body .ui-group-theme-a .ui-btn:visited, html head+body .ui-btn.ui-btn-a:visited{
   text-shadow: none !important;
 }
+.ui-header {
+  background: #2f76d3 !important;
+}
+/* end overwrites */
 
 .black-bg{
   background: #000 !important;
 }
 .blue-bg {
-  background: #2f76d3 !important;
+  background: #2f76d3;
 }
 .green-bg {
   background: #72cd28 !important;
@@ -89,6 +94,9 @@ td.active-btn{
   padding: .5em;
   color: gold;
 }
+#pointsText{
+  vertical-align: top;
+}
 
 .videowrapper {
     float: none;
@@ -118,7 +126,26 @@ div.answer-btn{
   -o-transition: all 0.1s ease-out;
   transition: all 0.1s ease-out;
 }
-div.answer-btn:active{
-  background: white !important;
-  color: #2f76d3 !important;
+div.answer-btn-active:active{
+  background: white;
+  color: #2f76d3;
+}
+.notransition {
+  -webkit-transition: none !important;
+  -moz-transition: none !important;
+  -o-transition: none !important;
+  -ms-transition: none !important;
+  transition: none !important;
+}
+
+.hulk{
+  font-size: 1.1em !important;
+  color: #72cd28 !important;
+}
+#panelPoints{
+    -webkit-transition: all 0.5s linear;
+    -moz-transition: all 0.5s linear;
+    -ms-transition: all 0.5s linear; /* IE10 is actually unprefixed */
+    -o-transition: all 0.5s linear;
+    transition: all 0.5s linear;
 }

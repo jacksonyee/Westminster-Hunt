@@ -91,31 +91,35 @@
     $('#title').html(newName);
   }
 
-  loadQuestion = function(id, data) {
+// should be in questions controller
+  var correctAnswer = null;
+  var userScore = 0;
+  loadQuestion = function(id, retrievedCategory) {
     $.ajax({
       url: "views/questionPage.html"
     })
-    .done(function( data ) {
+    .done(function( dataPage ) {
       changePageTitle("Question");
-      $('#content-frame').html(data);
-      //displayQuestion(id, data);
+      $('#content-frame').html(dataPage);
+      displayQuestion(id, retrievedCategory);
     });
-  }
-
-  displayQuestion = function(id, data) {
+  };
+  displayQuestion = function(id, retrievedCategory) {
     if (id < 1) return;
-    currentQuestion = eval("data.questions.q" + id);
-    page = id + '<br>';
-    page += currentQuestion.title;
-    page += "<br>";
-    page += currentQuestion.answers.a;
-    page += "<br>";
-    page += currentQuestion.answers.b;
-    page += "<br>";
-    page += currentQuestion.answers.c;
-    page += "<br>";
-    page += currentQuestion.answers.d;
-    page += "<br>";
-    $('#content-frame').html(page);
-  }
+    currentQuestion = eval("retrievedCategory.questions.q" + id);
+    $("#question").html(currentQuestion.title);
+    $("#opt-a").html(currentQuestion.answers.a);
+    $("#opt-b").html(currentQuestion.answers.b);
+    $("#opt-c").html(currentQuestion.answers.c);
+    $("#opt-d").html(currentQuestion.answers.d);
+    correctAnswer = currentQuestion.right;
+  };
+  addToScoreAndUpdate = function() {
+    userScore += 10;
+    $('#panelPoints').html(userScore).addClass('hulk');
+    setTimeout(function(){
+      $('#panelPoints').removeClass('hulk');
+    }, 500);
+  };
+// end of questions controller
 </script>
