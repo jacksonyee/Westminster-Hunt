@@ -1,7 +1,10 @@
 /* phone */
 @media screen and (max-width: 736px) {
   div.ui-content{
-    width: 91%;
+    width: 100%;
+  }
+  div.ui-content div.home-box {
+    margin: 1em 4%;
   }
   #content{
     width: 100%;

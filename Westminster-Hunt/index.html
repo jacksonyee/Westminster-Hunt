@@ -61,7 +61,9 @@
 
 	<div data-role="content">
 		<div id="panel-tablet" class="tablet-elem"></div>
-		<div id="content-frame"><div>
+		<div id="content-frame">
+			<div id="test">TEST</div>
+		<div>
 	</div><!-- /content -->
 
 	<!-- defaultpanel  -->
@@ -90,5 +92,14 @@
 		console.log("phone");
 	}
 	console.log(width);
+	$('#test').click( function() {
+		$.ajax({
+			url: "views/missionList.html"
+		})
+		.done(function( data ) {
+			//changePageTitle("Mission List");
+			$('#content-frame').html(data);
+		});
+	});
 </script>
 </html>

@@ -155,7 +155,7 @@ div.answer-btn-active:active{
     width:100%;
     display:inline-block;
 }
- 
+
     /*----- Tab Links -----*/
     /* Clearfix */
     .tab-links:after {
@@ -163,13 +163,19 @@ div.answer-btn-active:active{
         clear:both;
         content:'';
     }
- 
+
+    .tab-links{
+        margin:0;
+        padding: 0;
+    }
+
     .tab-links li {
         margin:0px 0px;
         float:left;
         list-style:none;
+        width:25%;
     }
- 
+
         .tab-links a {
             padding:9px 15px;
             display:inline-block;
@@ -179,18 +185,21 @@ div.answer-btn-active:active{
             font-weight:600;
             color:#ffffff;
             transition:all linear 0.15s;
+            display: block;
+            text-align: center;
+            text-decoration: none;
         }
- 
+
         .tab-links a:hover {
             background:#a7cce5;
             text-decoration:none;
         }
- 
+
     li.active a, li.active a:hover {
         background:#fff;
         color:#4c4c4c;
     }
- 
+
     /*----- Content of Tabs -----*/
     .tab-content {
         padding:0px;
@@ -198,11 +207,11 @@ div.answer-btn-active:active{
         box-shadow:-1px 1px 1px rgba(0,0,0,0.15);
         background:#fff;
     }
- 
+
         .tab {
             display:none;
         }
- 
+
         .tab.active {
             display:block;
         }
