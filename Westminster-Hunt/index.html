@@ -62,8 +62,8 @@
 	<div data-role="content">
 		<div id="panel-tablet" class="tablet-elem"></div>
 		<div id="content-frame">
-			<div id="test">TEST</div>
-		<div>
+			<a href="#" id="test">TEST</a>
+		</div>
 	</div><!-- /content -->
 
 	<!-- defaultpanel  -->
@@ -90,6 +90,13 @@
 	else {
 		// phone
 		console.log("phone");
+		$.ajax({
+		  url: "views/panel-contents-phone.html"
+		})
+	  .done(function( data ) {
+			$('#defaultpanel').html(data);
+	  });
+		// load AJAX for everything
 	}
 	console.log(width);
 	$('#test').click( function() {

@@ -8,12 +8,26 @@
   </ul>
 </div>
 
+
+
+<div style="
+    position: absolute;
+    bottom: 5%;
+    width: 100%;
+    text-align: center;">
+  <span class="color-orange">+<span id="question-possible-points">10</span></span><img src="img/Star.png" style="height: 1.1em;"> for the right answer
+  <div id="skip-btn" class="my-btn" style="margin: 1em auto;">Skip</div>
+</div>
+
 <script>
   $(".answer-btn").click(function() {
     // TODO tansfer the bg responsive translation in JS or remove it
     if ($(this).attr('id') == "opt-" + correctAnswer) {
       $('#content-frame').append("correct");
       $(this).removeClass('blue-bg').addClass('green-bg');
+      $("#next-btn").show();
+      $("#skip-btn").unbind("click").parent().html("");
+      $("#td-points-available").html("");
       addToScoreAndUpdate();
     }
     else {
@@ -24,6 +38,11 @@
     $('.answer-btn').unbind('click');
     //remove css animations
     $('.answer-btn').removeClass('answer-btn-active');
+  });
+
+  $("#skip-btn, #next-btn").click(function() {
+    console.log(currentId);
+    loadQuestion(++currentId, JSON.parse(localStorage.getItem(currentCategory)));
   });
 /**/
 </script>

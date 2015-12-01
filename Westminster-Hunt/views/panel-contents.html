@@ -17,13 +17,15 @@
 </table>
 
 <script>
+  currentCategory = null;
+  currentId = null;
+
+
   // function to dynamically load new pages using AJAX
   loadCategory = function() {
 
     categoryName = $(this).attr("view");
-    console.log("c " + categoryName);
-
-
+    // console.log("c " + categoryName);
 
     // make element active
     $('.active-btn').addClass('ui-alt-icon').removeClass('active-btn');
@@ -33,6 +35,8 @@
 
     // load ajax
     retrievedCategory = null;
+    currentCategory = categoryName;
+    currentId = 1;
     if (localStorage.getItem(categoryName) == null)
     {
       $.ajax({
@@ -54,7 +58,7 @@
       console.log(retrievedCategory);
       // dynamically create content
 
-      loadQuestion(1, retrievedCategory);
+      loadQuestion(currentId, retrievedCategory);
     }
   };
   loadView = function() {
@@ -106,6 +110,8 @@
   };
   displayQuestion = function(id, retrievedCategory) {
     if (id < 1) return;
+    console.log(currentCategory);
+    console.log(retrievedCategory);
     currentQuestion = eval("retrievedCategory.questions.q" + id);
     $("#question").html(currentQuestion.title);
     $("#opt-a").html(currentQuestion.answers.a);

@@ -25,6 +25,9 @@ body{
 .red-bg {
   background: #c92D39 !important;
 }
+.color-orange{
+  color: #ffc700;
+}
 
 .home {
   background: url(http://www.westminster.ac.uk/__data/assets/image/0003/315912/homepage_bg_2014-repeat.png?v=0.1.9);

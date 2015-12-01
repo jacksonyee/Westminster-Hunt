@@ -101,6 +101,21 @@
   ul#answers li:nth-child(odd){
     float: left;
   }
+  /*
+  .question-table-td-btn {
+    width: 1%;
+    vertical-align: bottom;
+  }
+  .question-table-td-score {
+    text-align: center;
+    padding-bottom: 10%;
+    vertical-align: top;
+  }
+  .question-table-td-score span{
+    font-weight: bold;
+  }
+  */
+
 
   /* end pannel tablet */
   .phone-elem{
