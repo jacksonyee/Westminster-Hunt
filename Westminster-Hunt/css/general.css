@@ -218,3 +218,30 @@ div.answer-btn-active:active{
         .tab.active {
             display:block;
         }
+
+	/*--- Mission Buttons ---*/
+	.mission-button {
+		display: inline-block;
+ 		height: 100px;
+ 		width: 200px;
+ 		background: #990033;
+ 		border: 2px solid rgba(33, 68, 72, 0.59);
+ 		list-style: none;
+		
+		
+		 /*--- Text Style ---*/
+ 		color: #FFFFFF;
+ 		text-align: center;
+ 		font: 50px "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+		}
+	
+	/*--- Favourite Button ---*/
+	.fave-button {
+		display: inline-block;
+		height: 50px;
+		width: 50px;
+		background:url(/Westminster-Hunt/Westminster-Hunt/images/fave-icon.png);
+		box-align: right;
+	}
+		
+	
