@@ -1,0 +1,34 @@
+    <div data-role="fieldcontain">
+    	<fieldset data-role="controlgroup">
+        <legend>Select your favorites</legend>
+        <label for="checkbox-1">Mission 1</label>
+        <input type="checkbox" name="checkbox-1" id="Mission 1" class="checkbox_fav" />
+        <label for="checkbox-2">Mission 2</label>
+        <input type="checkbox" name="checkbox-1" id="Mission 2" class="checkbox_fav" />
+        <label for="checkbox-3">Mission 3</label>
+        <input type="checkbox" name="checkbox-1" id="Mission 3" class="checkbox_fav" />
+        <label for="checkbox-3">Mission 4</label>
+        <input type="checkbox" name="checkbox-1" id="Mission 4" class="checkbox_fav" />
+		</fieldset>
+	</div>
+
+<script>
+	if (typeof favourites == "undefined") var favourites = [];
+	else {
+	// check every checkbox with an id saved in favourites
+		for (i=0; i<favourites.length ; i++)
+			$("#" + favourites[i]).prop('checked', true);
+	}
+	$(".checkbox_fav").click(function () {
+		id = $(this).attr("id");
+		index = favourites.indexOf(id);
+		if (index >= 0) {
+			//its in, remove it
+			favourites.splice(index, 1);
+		}
+		else {
+			// not in, add it
+			favourites.push(id);
+		}
+	});
+</script>

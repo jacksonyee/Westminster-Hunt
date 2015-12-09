@@ -243,5 +243,29 @@ div.answer-btn-active:active{
 		background:url(/Westminster-Hunt/Westminster-Hunt/images/fave-icon.png);
 		box-align: right;
 	}
-		
+	
+	/*----- Westminster icon -----*/
+	.ui-icon-myicon:after {
+    	background-image: url("http://s16.postimg.org/glurh4dtx/logo.jpg");
+    	/* Make your icon fit */
+    	background-size: 22px 22px;
+	}
+
+	/*----- Frame icon -----*/
+	iframe {
+    	border: none;
+	}
+
+	/*----- Box icon -----*/
+	#boxlist {
+	display: inline;
+ 	line-height: 120px;
+   	}
+
+  	#box {
+  	background: url("http://s30.postimg.org/oy90zoyjh/Unknown.png") no-repeat;
+
+    }
+    
+    
 	

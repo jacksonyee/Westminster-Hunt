@@ -1,1 +1,83 @@
-THIS IS THE NEWSLETTER PAGE
+
+<h2>Westminster Hunt Newsletter</h2> 
+
+<h3>Harry Potter & The Philosopher’s Stone – Regent Street Cinema Screening</h3>
+
+<span>December 8 @ 5:00 pm </span><br>
+
+<p><img src="http://s30.postimg.org/qzfgyherl/Screen_Shot_2015_12_08_at_22_15_33.png"></p>
+
+<p>Come join the UWSU Harry Potter Society at the Regent Street Cinema on Friday the 8th of December, where we they will be heading back to where it all started, the legendary Harry Potter and the Philosopher Stone!
+
+Tickets are only £15 for University of Westminster students, so make sure to grabs yours now, there’s literally no reason not to!</p>
+
+  <h3> Venue </h3>
+  	<dd>Regent Street Cinema</dd>
+  	<dd>309 Regent Street</dd> 
+  	<dd>London</dd> 
+  	<dd>W1B 2UW</dd>   
+  	<dd>United Kingdom 
+  	<a class="tribe-events-gmap" href="http://maps.google.com/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=309+Regent+Street+London+W1B+2UW+United+Kingdom" title="Click to view a Google Map" target="_blank">+ Google Map</a></dd><br>			
+  	<dd> Phone: 020 7911 5050</dd>	
+  	<dd> Website: <a href="http://www.regentstreetcinema.com/" target="_self">http://www.regentstreetcinema.com/</a> </dd><br>
+
+  <h3> Ticket </h3>
+    <div role="main" class="ui-content">
+        <form id="frmBooking" name="bookingForm" action="post">
+        	<dd><b>Harry Porter Cinema Ticket - £15.00</b></dd> 
+        	<input id="item_name" name="item_name" type="hidden" value="Harry Porter Cinema Ticket " />
+        	<input id="total_value" name="total_value" type="hidden" value="15" /><br>
+        	<dd><label for="select-native-1">Quantity:
+        	<select class="quanSelect" id="quanSelect">
+        		<option value="1">1</option>
+        		<option value="2">2</option>
+        		<option value="3">3</option>
+        		<option value="4">4</option>
+				<option value="5">5</option>
+				<option value="6">6</option>
+    		</select></label></dd><br>
+        	<dd><button id="customButton">Buy it now!</button></dd>
+        </form><br><br>
+    <div align="center" id="thankyouPayment"> </div><br><br> 
+   
+
+  
+<script>
+jQuery(function($) {
+	var $form = $('#frmBooking');
+	var handler = StripeCheckout.configure({
+    key: 'pk_test_cp21BcECf4kMMUbSlRlZlsMo',
+    image: 'http://s16.postimg.org/glurh4dtx/logo.jpg',
+    token: function(token) {
+      	// Use the token to create the charge with a server-side script.
+     	// You can access the token ID with `token.id`
+		
+		//This will be printed when the transaction is successful. To charge, server side scripting is required.
+		if(token.id){
+			$("#thankyouPayment").html("Thank you, your payment was succesful!");
+			
+			//You can also use the following code to re-submit the form content to another file for further processing.
+			//$form.get(0).submit();
+			
+			//Or save form data locally, using local storage.
+		}
+	}
+});
+
+	$('#customButton').on('click', function(e) {
+     // Open Checkout with further options
+	 handler.open({
+		name: 'Westminster Hunt',
+		currency: 'gbp',
+      	description: $('.quanSelect option:selected').val() + " x " + $('#item_name').val(),
+		amount: $('#total_value').val() * $('.quanSelect option:selected').val() * 100
+    });
+    e.preventDefault();
+  });
+
+  // Close Checkout on page navigation
+  $(window).on('popstate', function() {
+    handler.close();
+  });
+  });
+</script>
