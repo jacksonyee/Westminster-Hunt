@@ -80,7 +80,8 @@
     // drawChests
     for(var propName in currentMission) {
       var mission = eval("currentMission." + propName);
-      var html = chest_closed;
+      if (eval("doneMissions." + currentCategory + "."+ propName)) var html = chest_open;
+      else var html = chest_closed;
       $('#tab-' + currentCategory + ' ul').append(html).find('span').last().html('' + mission.title).parent().attr('id', propName);
     }
 
@@ -90,12 +91,15 @@
 
   chestAddOnClick = function() {
     // add listeners to chests
-    $('#tab-' + currentCategory + ' ul li div').click(function() {
+    $('#tab-' + currentCategory + ' ul li div.closed').click(function() {
       // console.log('id ' + $(this).attr('id'));
       currentMission = $(this).attr('id');
       currentId =  1;
       currentLen = eval('retrievedCategory.questions.' + currentMission + '.noofquestions')
       loadQuestion(currentMission, currentId);
+    });
+    $('#tab-' + currentCategory + ' ul li div.open').click(function() {
+      console.log('done chest');
     });
   };
   chestRemoveOnClick = function() {
