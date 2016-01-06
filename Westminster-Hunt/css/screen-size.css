@@ -23,17 +23,18 @@
   }
   /* pannel tablet */
   #content-frame{
-    width: 68%;
+    width: 66%;
+    padding: 0 1%;
     right: 0;
     bottom: 0;
-    top: 2.8em;
+    top: 0;
     position: absolute;
   }
   #panel-tablet{
     width: 30%;
     left: 0;
     bottom: 0;
-    top: 2.8em;
+    top: 0;
     position: absolute;
     border-right: 2px solid #eee;
   }
@@ -78,7 +79,19 @@
     bottom: 5%;
     position: absolute;
   }
-  ul#answers{
+  table#answers {
+    width: 100%;
+  }
+  table#answers tr td{
+    text-align: center;
+    width: 50%
+  }
+  table#answers tr td div{
+    width: 94%;
+    margin: 0;
+    display: inline-block;
+  }
+  ul#answers, ul#answers-pic{
     list-style: none;
     padding: 0;
     margin: 0;
@@ -86,20 +99,29 @@
     left: 0;
     right: 0;
   }
-  ul#answers li{
+  ul#answers li, ul#answers-pic li{
     display: inline-block;
     width: 49%;
     margin: .5em 0;
+    text-align: center;
   }
   ul#answers li div.answer-btn{
     width: 90%;
     margin: 0 auto;
   }
-  ul#answers li:nth-child(even){
+  ul#answers li:nth-child(even), ul#answers-pic li:nth-child(even){
     float: right;
   }
-  ul#answers li:nth-child(odd){
+  ul#answers li:nth-child(odd), ul#answers-pic li:nth-child(odd){
     float: left;
+  }
+  ul#answers-pic li div.answer-btn {
+    width: 200px;
+    height: 200px;
+    background-size: cover !important;
+    overflow: hidden;
+    background-repeat: no-repeat;
+    margin: 0 auto;
   }
   /*
   .question-table-td-btn {

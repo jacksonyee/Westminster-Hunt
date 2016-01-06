@@ -1,0 +1,281 @@
+{
+  "questions": {
+
+    "m1": {
+
+      "title": "Structures & Peices",
+      "noofquestions": "3",
+      "info": {
+
+
+        "q1_info": "The memorial is of remmberence of Queen Mary 's visit for the opening of the Little Titchford Street campus in 1929.\\n        4 - 12 Little Titchfield Street was known at the time as the Great Portland Street Annexe,\\n        was opened\\n        for the craft schools of the Regent Street Polytechnic.\\n        ",
+
+        "q2_info": " ",
+
+
+        "q3_info": " Ben Joiner an artist of the University of Westminster designed the dramatic arresting metal sculptures seen outsisde the Cavendish campus "
+      },
+
+
+      "img1": "images/places/m1/quen",
+      "img2": "images/places/m1/pain",
+      "img3": "images/places/m1/scul",
+
+      "q1": {
+        "question": "Where is this memorial located?",
+        "image": "images/places/m1/quen/memo",
+        "answersType": "text",
+        "answers": {
+          "a": "Outside the campus entrance",
+          "b": "Near the canteen",
+          "c": "On the first floor library entrance",
+          "d": "Outside the fith floor study labs"
+        },
+        "correct": "a",
+        "location": "lts"
+      },
+
+      "q2": {
+        "question": "Where can this painting be found?",
+        "image": "images/places/m1/quen/memo",
+        "answersType": "text",
+        "answers": {
+          "a": "Outside Regents campus",
+          "b": "On the fith floor",
+          "c": "In the Old Gym",
+          "d": "Near reception towards the first floor"
+        },
+        "correct": "c",
+        "location": "rgt"
+      },
+
+      "q3": {
+        "question": "Have you seen this sculpture anywhere?",
+        "image": "images/places/m1/quen/scul",
+        "answersType": "text",
+        "answers": {
+          "a": "Regents Street",
+          "b": "Cavendish",
+          "c": "Little Titchford Street",
+          "d": "Well's Street"
+        },
+        "correct": "b",
+        "location": "cav"
+      }
+    },
+
+
+
+    "m2": {
+
+      "title": "Food & Entertainment",
+      "noofquestions": "4",
+      "info": {
+
+
+        "q1_info": "         Regent Street Univeristy Student Gym\\n        The University of Westminster believes in it 's students and supports them in their drive, ambitions and determinsation\\n        Located in the heart of London,\\n        just a short walk from bustling Oxford Street,\\n        is Regent Street gym.\\n\\n        >> Facilities\\n        Our gym offers cardio and weights facilities,\\n        and general floor space\\n        for stretching or free weights.we also have clean and pleasant changing,\\n        shower and locker facilities,\\n        as well as towels to hire.\\n        Four highly qualified and experienced sports and exercise scientists are on hand to offer fitness assessments,\\n        body composition analysis,\\n        personal training,\\n        nutrition and weight loss advice,\\n        and prepare tailored fitness plans.\\n\\n        >> Classes\\n        The classes we offer at Regent Street gym include spin,\\n        TRX,\\n        Zumba,\\n        Boxfit,\\n        Pilates and yoga.\\n\\n\\n        Student opening hours\\n\\n        Monday to Thursday: 8 am� 9 pm\\n        Friday: 8 am� 7.30 pm\\n        Saturday: closed\\n        Sunday: 11.30 am� 3 pm ",
+
+        "q2_info": "        Gym Prices: ",
+
+
+        "q3_info": "        The Gallery\\n        Located at our 309 Regent Street site,\\n        the Gallery Cafe is open to students,\\n        staff and the general public.\\n        Its affordable prices and central location make it an excellent meeting point\\n        for working lunches and informal meetings.        ",
+
+
+        "q4_info": "         Caf� neo\\n        located in the Cavendish campus,\\n        you can find everything you need to keep you going through your day.Its a nice place to hang out with freinds,\\n        eat some hot food or just socialise in your spare time.\\n        Hot and cold drinks are also on sale just ask one of the freindly staff and they will be happy to assist you with more information on whats available."
+      },
+
+
+      "img1": "images/places/m2/gym",
+      "img2": "images/places/m2/gymc",
+      "img3": "images/places/m2/cafe",
+      "img4": "images/places/m2/gall",
+
+      "q1": {
+        "question": "Where is the Gym located in Regents?",
+        "answersType": "text",
+        "answers": {
+          "a": "Ground floor",
+          "b": "Lower ground floor",
+          "c": "Third Floor",
+          "d": "Basement"
+        },
+        "correct": "d",
+        "location": "rgt"
+      },
+
+
+      "q2": {
+        "question": "How much is gym membership monthly, if you pay for the whole year?",
+        "answersType": "text",
+        "answers": {
+          "a": "�10",
+          "b": "�20 ",
+          "c": "�17",
+          "d": "�13"
+        },
+        "correct": "d",
+        "location": "rgt"
+      },
+
+      "q3": {
+        "question": "The Gallery next to Regents campus is a museum open to the public?",
+        "answersType": "text",
+        "answers": {
+          "a": "true",
+          "b": "false"
+        },
+        "correct": "b",
+        "location": "rgt"
+      },
+
+      "q3": {
+        "question": "What is the correct name for the Caf� found at Cavendish?",
+        "answersType": "text",
+        "answers": {
+          "a": "Cafertino",
+          "b": "Caf�nero",
+          "c": "CostaCafe",
+          "d": "Caf�neo"
+        },
+        "correct": "d",
+        "location": "cav"
+      }
+    },
+
+
+    "m3": {
+
+      "title": "Lecture Facilities",
+      "noofquestions": "3",
+      "info": {
+
+
+        "q1_info": "Portland Hall\\n          Campus: Little Titchford Street\\n          Location: Basement,\\n          B2\\n          Facilities: Wheelchair access\\n          Capacity: �180 lecture theatre style� 130 classroom style� 100 exam style� 50 boardroom style� 60 cabaret ",
+
+
+        "q2_info": "          Large Lecture Theatre\\n          Campus: Cavendish\\n          Location: Second floor,\\n          C2.12\\n          Facilities: Wheelchair access\\n          Capacity: 200 seated",
+
+
+        "q3_info": "          Lecture Facilities in Little Titchford Street\\n          Lecture Theatre - > Second Floor,\\n          2.05\\n          Lecture Theatre - > Third Floor,\\n          3.07\\n          New Lecture Theatre - > Ground Floor\\n          Portland Hall - > Basement,\\n          B2 "
+      },
+
+
+      "img1": "images/places/m3/portl",
+      "img2": "images/places/m3/lltd",
+      "img3": "images/places/m3/ltsb",
+
+      "q1": {
+        "question": "On what floor is the Portland Hall situated on?",
+        "answersType": "text",
+        "answers": {
+          "a": "Basement B4",
+          "b": "Basement B2",
+          "c": "Third Floor",
+          "d": "Second Floor"
+        },
+        "correct": "b",
+        "location": "lts"
+      },
+
+
+      "q2": {
+        "question": "Choose the correct image of the Large Lecture Theatre found in Cavendish",
+        "answersType": "image",
+        "answers": {
+          "a": "images/places/m3/llta",
+          "b": "images/places/m3/lltb",
+          "c": "images/places/m3/lltc",
+          "d": "images/places/m3/lltd"
+        },
+        "correct": "d",
+        "location": "cav"
+      },
+
+      "q3": {
+        "question": "How many Lecture facilities are there in Little Titchford Street?",
+        "answersType": "text",
+        "answers": {
+          "a": "3",
+          "b": "2",
+          "c": "5",
+          "d": "4"
+        },
+        "correct": "d",
+        "location": "lts"
+      }
+    },
+
+
+    "m4": {
+
+      "title": "Classrooms",
+      "noofquestions": "4",
+      "info": {
+
+        "q1_info": "Interpretation Practice Rooms\\n            Situated on the upper fourth floor of 301 Regent Street,\\n            a dedicated learning area\\n            for Modern Languages students has been created.\\n            The space encourages greater interaction between staff and students and includes new state - of - the - art language labs\\n            for Interpreting and Translation students plus attractive offices for staff.",
+
+        "q2_info": "",
+
+        "q3_info": "",
+
+        "q4_info": ""
+      },
+
+      "img1": "images/places/m4/inter",
+      "img2": "null",
+      "img3": "images/places/m4/sunr",
+      "img4": "null",
+
+      "q1": {
+        "question": "Find the floor with the new interpretation practice classrooms?",
+        "answersType": "text",
+        "answers": {
+          "a": "Upper fourth floor",
+          "b": "Lower ground",
+          "c": "First floor",
+          "d": "Upper third floor"
+        },
+        "correct": "a",
+        "location": "rgt"
+      },
+
+
+      "q2": {
+        "question": "Which Campus and locations contain macs for students to use?",
+        "answersType": "text",
+        "answers": {
+          "a": "Cavendish, library & clipstone 4th floor",
+          "b": "Regent St., fith floor  ",
+          "c": "Little Titchford St Library",
+          "d": "Wells St Basement"
+        },
+        "correct": "a",
+        "location": "null"
+      },
+
+      "q3": {
+        "question": "Which room contains the Sunray computer facilities in Cavendish?",
+        "answersType": "text",
+        "answers": {
+          "a": "Clip 3.108",
+          "b": "Clip 1.108",
+          "c": "Cav C4.02",
+          "d": "Cav C1.01"
+        },
+        "correct": "b",
+        "location": "cav"
+      },
+
+      "q4": {
+        "question": "Students can play pool and table tennis for free in Regents campus?",
+        "answersType": "text",
+        "answers": {
+          "a": "true",
+          "b": "false"
+        },
+        "correct": "a",
+        "location": "cav"
+      }
+    }
+  }
+}

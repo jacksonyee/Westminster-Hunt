@@ -1,3 +1,15 @@
+#overlay {
+  height: 100%;
+  background:rgba(0,0,0,.75);
+  text-align:center;
+  padding:45px 0 66px 0;
+  opacity:1;
+  -webkit-transition: opacity .25s ease;
+  -moz-transition: opacity .25s ease;
+}
+#opt-a:hover #overlay {opacity:1;}
+
+
 /* overwrites */
 body{
   font-family: system, -apple-system, ".SFNSDisplay-Regular", HelveticaNeue, LucidaGrande;
@@ -227,14 +239,14 @@ div.answer-btn-active:active{
  		background: #990033;
  		border: 2px solid rgba(33, 68, 72, 0.59);
  		list-style: none;
-		
-		
+
+
 		 /*--- Text Style ---*/
  		color: #FFFFFF;
  		text-align: center;
  		font: 50px "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
 		}
-	
+
 	/*--- Favourite Button ---*/
 	.fave-button {
 		display: inline-block;
@@ -243,7 +255,7 @@ div.answer-btn-active:active{
 		background:url(/Westminster-Hunt/Westminster-Hunt/images/fave-icon.png);
 		box-align: right;
 	}
-	
+
 	/*----- Westminster icon -----*/
 	.ui-icon-myicon:after {
     	background-image: url("http://s16.postimg.org/glurh4dtx/logo.jpg");
@@ -266,6 +278,3 @@ div.answer-btn-active:active{
   	background: url("http://s30.postimg.org/oy90zoyjh/Unknown.png") no-repeat;
 
     }
-    
-    
-	

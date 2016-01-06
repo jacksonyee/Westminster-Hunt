@@ -1,10 +1,26 @@
 <div class="center-page">
   <h2 id="question">TITLE</h2>
-  <ul id="answers">
-    <li><div id="opt-a" class="my-btn answer-btn answer-btn-active blue-bg">a</div></li>
-    <li><div id="opt-b" class="my-btn answer-btn answer-btn-active blue-bg">b</div></li>
-    <li><div id="opt-c" class="my-btn answer-btn answer-btn-active blue-bg">c</div></li>
-    <li><div id="opt-d" class="my-btn answer-btn answer-btn-active blue-bg">d</div></li>
+  <table id="answers">
+    <tr>
+      <td>
+        <div id="opt-a" class="my-btn answer-btn answer-btn-active blue-bg">a</div>
+      </td><td>
+        <div id="opt-b" class="my-btn answer-btn answer-btn-active blue-bg">b</div>
+      </td>
+    </tr><tr>
+      <td>
+        <div id="opt-c" class="my-btn answer-btn answer-btn-active blue-bg">c</div>
+      </td><td>
+        <div id="opt-d" class="my-btn answer-btn answer-btn-active blue-bg">d</div>
+      </td>
+    </tr>
+  </table>
+  
+  <ul id="answers-pic">
+    <li><div id="opt-a" class="answer-btn"><div id="overlay"></div></div></li>
+    <li><img id="opt-b" class="answer-btn"></img></li>
+    <li><img id="opt-c" class="answer-btn"></img></li>
+    <li><img id="opt-d" class="answer-btn"></img></li>
   </ul>
 </div>
 
@@ -25,9 +41,6 @@
     if ($(this).attr('id') == "opt-" + correctAnswer) {
       $('#content-frame').append("correct");
       $(this).removeClass('blue-bg').addClass('green-bg');
-      $("#next-btn").show();
-      $("#skip-btn").unbind("click").parent().html("");
-      $("#td-points-available").html("");
       addToScoreAndUpdate();
     }
     else {
@@ -35,12 +48,14 @@
       $(this).removeClass('blue-bg').addClass('red-bg');
       $('#opt-' + correctAnswer).removeClass('blue-bg').addClass('green-bg');
     }
+    $("#td-points-available").html("");
     $('.answer-btn').unbind('click');
     //remove css animations
     $('.answer-btn').removeClass('answer-btn-active');
+    $("#skip-btn").html('Next');
   });
 
-  $("#skip-btn, #next-btn").click(function() {
+  $("#skip-btn").click(function() {
     console.log(currentId);
     loadQuestion(++currentId, JSON.parse(localStorage.getItem(currentCategory)));
   });

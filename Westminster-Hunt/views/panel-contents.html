@@ -12,7 +12,7 @@
   </tr>
   <tr>
     <td view="Map">Map of Campuses</td>
-    <td view="Favourites">Favourites</td>
+    <td view="fav">Favourites</td>
   </tr>
 </table>
 
@@ -23,7 +23,6 @@
 
   // function to dynamically load new pages using AJAX
   loadCategory = function() {
-
     categoryName = $(this).attr("view");
     // console.log("c " + categoryName);
 
@@ -50,6 +49,10 @@
         retrievedCategory = data;
         // dynamically create content
         loadQuestion(1, data);
+      })
+      .error(function(data) {
+        var r = jQuery.parseJSON(data.responseText);
+        console.log(r);
       });
     }
     else {
@@ -57,7 +60,6 @@
       console.log("saved");
       console.log(retrievedCategory);
       // dynamically create content
-
       loadQuestion(currentId, retrievedCategory);
     }
   };
@@ -109,16 +111,36 @@
     });
   };
   displayQuestion = function(id, retrievedCategory) {
+    mod = 1; //awlays int - test
     if (id < 1) return;
-    console.log(currentCategory);
-    console.log(retrievedCategory);
-    currentQuestion = eval("retrievedCategory.questions.q" + id);
-    $("#question").html(currentQuestion.title);
-    $("#opt-a").html(currentQuestion.answers.a);
-    $("#opt-b").html(currentQuestion.answers.b);
-    $("#opt-c").html(currentQuestion.answers.c);
-    $("#opt-d").html(currentQuestion.answers.d);
-    correctAnswer = currentQuestion.right;
+    // console.log(currentCategory);
+    // console.log(retrievedCategory);
+    currentQuestion = eval("retrievedCategory.questions.m" + mod + '.q' + id);
+    console.log(currentQuestion);
+    if (currentQuestion.answersType == 'text'){
+      // answers are text
+      $('#answers-pic').hide();
+      $("#question").html(currentQuestion.title);
+      $("#opt-a").html(currentQuestion.answers.a);
+      $("#opt-b").html(currentQuestion.answers.b);
+      $("#opt-c").html(currentQuestion.answers.c);
+      $("#opt-d").html(currentQuestion.answers.d);
+      correctAnswer = currentQuestion.correct;
+    }
+    else if (currentQuestion.answersType == 'image') {
+      // answers are images
+      $('#answers').remove();
+      $("#question").html(currentQuestion.title);
+      console.log(currentQuestion.answers.a);
+      // $("#opt-a").css('background', 'url(http://ianfarb.com/wp-content/uploads/2013/10/nicholas-hodag.jpg)');
+      $("#opt-a").css('background', 'url(models/' + currentQuestion.answers.a + ')');
+      // $("#opt-a").attr('src', 'models/' + currentQuestion.answers.a);
+      $("#opt-b").attr('src', 'models/' + currentQuestion.answers.a);
+      $("#opt-c").attr('src', 'models/' + currentQuestion.answers.a);
+      $("#opt-d").attr('src', 'models/' + currentQuestion.answers.a);
+      correctAnswer = currentQuestion.correct;
+
+    }
   };
   addToScoreAndUpdate = function() {
     userScore += 10;

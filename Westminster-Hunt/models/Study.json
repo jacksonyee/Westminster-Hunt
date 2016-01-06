@@ -1,0 +1,248 @@
+{
+  "questions": {
+
+    "m1": {
+
+      "title": "Learning",
+      "noofquestions": "3",
+      "info": {
+
+        "q1_info": "Referred/deferred examinations are taken in the summer outside of term and occur on exception circumstances.",
+
+        "q2_info": "There are only two terms per year",
+
+        "q3_info": "Changing forgotten passwords will be easier to do on campus,\\n at home or anywhere with an internet connection.\\n\\n Once you are connected to the internet visit password.westminster.ac.uk,\\n enter your username and select the forgotten password link.\\n An email will then be sent to the alternate email address you provided in SRSWeb.\\n Go to your alternate email address and select the link to reset your password.\\n\\n Once your forgotten password is reset,\\n you will need to wait a\\n while\\n for your password details to be synchronised across services such as Blackboard,\\n SRSWeb,\\n Google Apps etc.\\n Synchronisation may take up to an hour especially during busy periods.\\n The password.westminster.ac.uk online service has also been updated to provide you with links to information on how to connect to the University� s wireless network;IT help contacts;and information on IT Security.",
+
+        "q4_info": "It takes both knowledge and effor to succeed. Without effort one cant gain the knowledge and without knowledge one cant make an effort."
+      },
+
+
+      "img1": "null",
+      "img2": "null",
+      "img3": "null",
+
+
+      "q1": {
+        "title": "There are 3 Terms in a full year at university. True or False?",
+        "answersType": "text",
+        "answers": {
+          "a": "True",
+          "b": "False"
+        },
+        "correct": "b",
+        "location": "null"
+      },
+
+      "q2": {
+        "title": "What to do when forgetting your password?",
+        "answersType": "text",
+        "answers": {
+          "a": "Contact FixIt or use online self service",
+          "b": "Go see the registry office",
+          "c": "Contact you tutour",
+          "d": "Contact the maintenance staff"
+        },
+        "correct": "a",
+        "location": "null"
+      },
+
+
+      "q3": {
+        "title": "Grades are assessed on knowledge not effort. True or False?",
+        "answersType": "text",
+        "answers": {
+          "a": "True",
+          "b": "False"
+        },
+        "correct": "b",
+        "location": "cav"
+      }
+    },
+
+    "m2": {
+
+      "title": "Services",
+      "noofquestions": "3",
+      "info": {
+
+        "q1_info": "Laptops can be borrowed for a period of 24 hours.",
+
+        "q2_info": "Dialling 5488 will allow you to contact fixit andget further technical support ",
+
+        "q3_info": "Booking study rooms\\n Cavendish,\\n Marylebone and Regent Libraries\\n\\n You can now book group study rooms at our libraries at Cavendish,\\n Marylebone and Regent Campus,\\n using the booking service available through Timetabling.\\n\\n Download our step - by - step room bookings guide\\nLog in to Timetabling to book a room "
+      },
+
+
+      "img1": "null",
+      "img2": "images/study/m2/fixi",
+      "img3": "null",
+
+      "q1": {
+        "title": "Libraries offer laptops on loan for a period of ? ",
+        "answersType": "text",
+        "answers": {
+          "a": "24 Hours",
+          "b": "8 Hours",
+          "c": "3 Days",
+          "d": "1 week"
+        },
+        "correct": "a",
+        "location": "cav"
+      },
+
+
+      "q2": {
+        "title": "How to does one contact fix on the university landlines?",
+        "answersType": "text",
+        "answers": {
+          "a": "dial 1589",
+          "b": "dial 6675",
+          "c": "dial 8635",
+          "d": "dial 5488"
+        },
+        "correct": "c",
+        "location": "cav"
+      },
+
+      "q3": {
+        "title": "Students can book rooms. True or False?",
+        "answersType": "text",
+        "answers": {
+          "a": "True",
+          "b": "False"
+        },
+        "correct": "a",
+        "location": "null"
+      }
+
+    },
+
+    "m3": {
+
+      "title": "Facilities",
+      "noofquestions": "4",
+      "info": {
+
+        "q1_info": " There are 5 silent study group rooms in the Cavendish library",
+        "q2_info": "Booking study rooms\\n   Cavendish,\\n   Marylebone and Regent Libraries\\n\\n   You can now book group study rooms at our libraries at Cavendish,\\n   Marylebone and Regent Campus,\\n   using the booking service available through Timetabling.\\n\\n   Download our step - by - step room bookings guide\\n   Log in to Timetabling to book a room\\n\\n   Rooms can be booked\\n   for the current week and a week in advance.\\n\\n   If your booked room is not in use within 15 minutes of your booked time,\\n   it will become available to other students.If you no longer need a room make sure you log in to the system and cancel your booking.\\n\\n   Each study group:\\n\\n     Should consist of at least 3 people\\n   Can book a room\\n   for up to 2 hours a day\\n   Can book\\n   for a maximum of 4 hours a week ",
+
+        "q3_info": "The silent study area located in Cavendish library is on the fifth floor.",
+
+        "q4_info": "There are 5 silent study group rooms in the Cavendish library."
+      },
+
+      "img1": "images/study/m3/gssr",
+      "img2": "null",
+      "img3": "images/study/m3/sile",
+      "img4": "images/study/m3/caro",
+
+      "q1": {
+        "title": "How many silent study group rooms there in Cavendish library ? ",
+        "answersType": "text",
+        "answers": {
+          "a": "7",
+          "b": "5",
+          "c": "2",
+          "d": "5"
+        },
+        "correct": "b",
+        "location": "cav"
+      },
+
+      "q2": {
+        "title": "Silent study areas are bookable and found in certain libraries across campuses?",
+        "answersType": "text",
+        "answers": {
+          "a": "True",
+          "b": "False"
+        },
+        "correct": "a",
+        "location": "cav"
+      },
+
+      "q3": {
+        "title": "What floor is the silent study area located on in Cavendish Library?",
+        "answersType": "text",
+        "answers": {
+          "a": "Floor 3",
+          "b": "Floor 4",
+          "c": "Ground Floor",
+          "d": "Floor 5"
+        },
+        "correct": "d",
+        "location": "cav"
+      },
+
+      "q4": {
+        "title": "How many study carousels are on the fith floor in Cavendish Library?",
+        "answersType": "text",
+        "answers": {
+          "a": "2",
+          "b": "3",
+          "c": "5",
+          "d": "7"
+        },
+        "correct": "c",
+        "location": "cav"
+      }
+    },
+
+    "m4": {
+
+      "title": "Course",
+      "noofquestions": "3",
+      "info": {
+
+        "q1_info": "Typically 120 credits is the minimum in a year of study",
+        "q2_info": "The minimum credits per module is 15",
+        "q3_info": "Blackboard submissions are usually due on Mondays by 10am"
+      },
+
+
+      "img1": "null",
+      "img2": "null",
+      "img3": "null",
+
+
+      "q1": {
+        "title": "How many total credits is typical in a year on an undergradute course?",
+        "answersType": "text",
+        "answers": {
+          "a": "120",
+          "b": "15",
+          "c": "60",
+          "d": "55"
+        },
+        "correct": "a",
+        "location": "null"
+      },
+
+
+      "q2": {
+        "title": "What is the minimum credits for one module?",
+        "answersType": "text",
+        "answers": {
+          "a": "5",
+          "b": "6",
+          "c": "8",
+          "d": "15"
+        },
+        "correct": "d",
+        "location": "null"
+      },
+
+      "q3": {
+        "title": "Blackboard submissions are usually on what time/day of the week?",
+        "answersType": "text",
+        "answers": {
+          "a": "Tuesday 11am",
+          "b": "Thursday 6pm",
+          "c": "Monday 10am",
+          "d": "Monday 11am"
+        },
+        "correct": "c",
+        "location": "null"
+      }
+    }
+  }
+}
