@@ -26,7 +26,8 @@
     doneMissions = {'Campuses' : {},
       'Essentials' : {},
       'People' : {},
-      Study : {}
+      'Study' : {},
+      'score' : 0
     };
     localStorage.setItem('done', JSON.stringify(doneMissions));
   }
@@ -143,7 +144,9 @@
 
 // Questions controller
   var correctAnswer = null;
-  var userScore = 0;
+  var userScore = doneMissions.score;
+  if (userScore > 0) $('#panelPoints').html(userScore);
+  
   loadQuestion = function(mission, id) {
     // loads question view
     if (mission === undefined) mission = currentMission;
@@ -174,10 +177,17 @@
       // answers are text
       $('#answers-pic').hide();
       $("#question").html(currentQuestion.title);
-      $("#opt-a").html(currentQuestion.answers.a);
-      $("#opt-b").html(currentQuestion.answers.b);
-      $("#opt-c").html(currentQuestion.answers.c);
-      $("#opt-d").html(currentQuestion.answers.d);
+      if (currentQuestion.answers.a) $("#opt-a").html(currentQuestion.answers.a);
+      else $("#opt-a").hide();
+      if (currentQuestion.answers.b) $("#opt-b").html(currentQuestion.answers.b);
+      else $("#opt-b").hide();
+      if (currentQuestion.answers.c) $("#opt-c").html(currentQuestion.answers.c);
+      else $("#opt-c").hide();
+      if (currentQuestion.answers.d) $("#opt-d").html(currentQuestion.answers.d);
+      else $("#opt-d").hide();
+      // $("#opt-b").html(currentQuestion.answers.b);
+      // $("#opt-c").html(currentQuestion.answers.c);
+      // $("#opt-d").html(currentQuestion.answers.d);
       correctAnswer = currentQuestion.correct;
     }
     else if (currentQuestion.answersType == 'image') {
@@ -194,6 +204,7 @@
     }
   };
   addToScoreAndUpdate = function() {
+    // not used
     userScore += 10;
     $('#panelPoints').html(userScore).addClass('hulk');
     setTimeout(function(){
@@ -204,6 +215,8 @@
   setMissionAsDone = function() {
     // adds the current element as done
     var mission = eval('doneMissions.' + currentCategory + '.' + currentMission + ' = true');
+    // update score
+    doneMissions.score = userScore;
     localStorage.setItem('done', JSON.stringify(doneMissions));
     console.log(doneMissions);
   };
