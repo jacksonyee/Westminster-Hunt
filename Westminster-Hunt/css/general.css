@@ -40,6 +40,21 @@ body{
 .color-orange{
   color: #ffc700;
 }
+#fav-btn {
+  -webkit-transition: all 0.2s ease-out;
+  -moz-transition: all 0.2s ease-out;
+  -ms-transition: all 0.2s ease-out; /* IE10 is actually unprefixed */
+  -o-transition: all 0.2s ease-out;
+  transition: all 0.2s ease-out;
+}
+.fav-btn-false {
+  background: #eee !important;
+  color: #333 !important;
+}
+.fav-btn-true {
+  background: #f03 !important;
+  color: white !important;
+}
 
 .home {
   background: url(http://www.westminster.ac.uk/__data/assets/image/0003/315912/homepage_bg_2014-repeat.png?v=0.1.9);

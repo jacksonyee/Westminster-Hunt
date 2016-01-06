@@ -12,7 +12,7 @@
   </tr>
   <tr>
     <td view="Map">Map of Campuses</td>
-    <td view="fav">Favourites</td>
+    <td view="Fav">Favourites</td>
   </tr>
 </table>
 
@@ -34,6 +34,27 @@
   else {
     doneMissions = JSON.parse(localStorage.getItem('done'));
   }
+
+  loadView = function() {
+    // loads a view
+    var viewName = $(this).attr("view");
+
+    // make menu element active
+    $('.active-btn').addClass('ui-alt-icon').removeClass('active-btn');
+    $(this).addClass('active-btn').removeClass('ui-alt-icon');
+
+    // loadOff view listeners
+
+    // load ajax;
+    $.ajax({
+      url: "views/" + viewName + ".html"
+    })
+    .done(function( data ) {
+      if (viewName == 'Fav') viewName = 'Favourites';
+      changePageTitle(viewName);
+      $('#content-frame').html(data);
+    });
+  };
 
   // function to dynamically load new pages using AJAX
   loadCategory = function() {
@@ -74,6 +95,26 @@
     });
   };
 
+  /* favourites */
+  if (typeof favourites == "undefined") var favourites = [];
+	else {
+	// check every checkbox with an id saved in favourites
+		for (i=0; i<favourites.length ; i++)
+			$("#" + favourites[i]).prop('checked', true);
+	}
+	$(".checkbox_fav").click(function () {
+		id = $(this).attr("id");
+		index = favourites.indexOf(id);
+		if (index >= 0) {
+			//its in, remove it
+			favourites.splice(index, 1);
+		}
+		else {
+			// not in, add it
+			favourites.push(id);
+		}
+	});
+
   drawChests = function() {
     currentMission = eval("retrievedCategory.questions");
     // console.log(currentMission);
@@ -108,26 +149,6 @@
     $('#tab-' + currentCategory + ' ul li div').unbind('click');
   };
 
-  loadView = function() {
-    // loads a view
-    var viewName = $(this).attr("view");
-
-    // make menu element active
-    $('.active-btn').addClass('ui-alt-icon').removeClass('active-btn');
-    $(this).addClass('active-btn').removeClass('ui-alt-icon');
-
-    // loadOff view listeners
-
-    // load ajax;
-    $.ajax({
-      url: "views/" + viewName + ".html"
-    })
-    .done(function( data ) {
-      changePageTitle(viewName);
-      $('#content-frame').html(data);
-    });
-  };
-
   // assigning listeners
   $('#mission-categories li a').click(loadCategory);
   $("#nav-buttons tr td").click(loadView);
@@ -146,7 +167,7 @@
   var correctAnswer = null;
   var userScore = doneMissions.score;
   if (userScore > 0) $('#panelPoints').html(userScore);
-  
+
   loadQuestion = function(mission, id) {
     // loads question view
     if (mission === undefined) mission = currentMission;
