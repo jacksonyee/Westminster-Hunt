@@ -143,4 +143,29 @@
   .phone-elem{
     display: none !important;
   }
+
+  /* missions page */
+  .tab-links{
+    display: none;
+  }
+  .tab-content{
+    background: transparent;
+    box-shadow: none;
+  }
+  .tab{
+    text-align: center;
+    display: block;
+  }
+  div.tab ul {
+    display: inline-flex;
+    padding: 0;
+  }
+  div.tab ul li {
+    display: inline-block;
+    margin: 1em;
+  }
+  div.tab ul li div span {
+    text-align: center;
+    display: block;
+  }
 }

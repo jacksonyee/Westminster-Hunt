@@ -36,33 +36,56 @@
     retrievedCategory = null;
     currentCategory = categoryName;
     currentId = 1;
-    if (localStorage.getItem(categoryName) == null)
-    {
-      $.ajax({
-        url: "models/" + categoryName + ".json"
-      })
-      .done(function( data ) {
-        console.log("data");
-        console.log(data);
-        // save JSON as string in localStorage
-        localStorage.setItem(categoryName, JSON.stringify(data));
-        retrievedCategory = data;
+    $.ajax({
+      url: "views/missionList.html"
+    })
+    .done(function(data) {
+      $('#content-frame').html(data);
+      $('li a[href="#tab-' + categoryName + '"]').click();
+
+      if (localStorage.getItem(categoryName) == null)
+      {
+        $.ajax({
+          url: "models/" + categoryName + ".json"
+        })
+        .done(function( data ) {
+          console.log("data");
+          console.log(data);
+          // save JSON as string in localStorage
+          localStorage.setItem(categoryName, JSON.stringify(data));
+          retrievedCategory = data;
+          // dynamically create content
+          drawChests(retrievedCategory);
+          // loadQuestion(1, data);
+        })
+        .error(function(data, categoryName) {
+          var r = jQuery.parseJSON(data.responseText);
+          console.log(r);
+        });
+      }
+      else {
+        retrievedCategory = JSON.parse(localStorage.getItem(categoryName));
+        console.log("saved");
+        console.log(retrievedCategory);
         // dynamically create content
-        loadQuestion(1, data);
-      })
-      .error(function(data) {
-        var r = jQuery.parseJSON(data.responseText);
-        console.log(r);
-      });
-    }
-    else {
-      retrievedCategory = JSON.parse(localStorage.getItem(categoryName));
-      console.log("saved");
-      console.log(retrievedCategory);
-      // dynamically create content
-      loadQuestion(currentId, retrievedCategory);
+        drawChests(retrievedCategory, categoryName);
+        // loadQuestion(currentId, retrievedCategory);
+      }
+    });
+  };
+
+  drawChests = function(data, name) {
+    currentMission = eval("retrievedCategory.questions");
+    // console.log(currentMission);
+
+    // drawChests
+    for(var propName in currentMission) {
+      mission = eval("currentMission." + propName);
+      html = chest_closed;
+      $('#tab-' + name + ' ul').append(html).find('span').last().html('' + mission.title);
     }
   };
+
   loadView = function() {
     viewName = $(this).attr("view");
     console.log("v " + viewName);

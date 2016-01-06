@@ -1,42 +1,31 @@
 <div class="tabs" >
     <ul class="tab-links">
-        <li class="active"><a href="#tab1">Essentials</a></li>
-        <li><a href="#tab2">Study</a></li>
-        <li><a href="#tab3">People</a></li>
-        <li><a href="#tab4">Campuses</a></li>
+        <li><a href="#tab-Campuses">Campuses</a></li>
+        <li class="active"><a href="#tab-Essentials">Essentials</a></li>
+        <li><a href="#tab-People">People</a></li>
+        <li><a href="#tab-Study">Study</a></li>
     </ul>
 
     <div class="tab-content">
-        <div id="tab1" class="tab active">
-		<ul id="boxlist">
-		<li id="box"></li>
-		<li id="box"></li>
-		<li id="box"></li>
-		<li id="box"></li>
-		</ul>​
+      <div id="tab-Essentials" class="tab active">
+        <ul>
+        </ul>
+      </div>
 
-        </div>
+      <div id="tab-Study" class="tab">
+        <ul>
+        </ul>
+      </div>
 
-        <div id="tab2" class="tab">
-		<ul><div id="mission2.1" class="mission-button">Study 1</div> <div id="fave2.1" class="fave-button"> </div></ul>
-		<ul><div id="mission2.2" class="mission-button">Study 2</div> <div id="fave2.2" class="fave-button"> </div></ul>
-		<ul><div id="mission2.3" class="mission-button">Study 3</div> <div id="fave2.3" class="fave-button"> </div></ul>
-		<ul><div id="mission2.4" class="mission-button">Study 4</div> <div id="fave2.4" class="fave-button"> </div></ul>
-        </div>
+      <div id="tab-People" class="tab">
+        <ul>
+        </ul>
+      </div>
 
-        <div id="tab3" class="tab">
-		<ul><div id="mission3.1" class="mission-button">People 1</div> <div id="fave3.1" class="fave-button"> </div></ul>
-		<ul><div id="mission3.2" class="mission-button">People 2</div> <div id="fave3.2" class="fave-button"> </div></ul>
-		<ul><div id="mission3.3" class="mission-button">People 3</div> <div id="fave3.3" class="fave-button"> </div></ul>
-		<ul><div id="mission3.4" class="mission-button">People 4</div> <div id="fave3.4" class="fave-button"> </div></ul>
-        </div>
-
-        <div id="tab4" class="tab">
-		<ul><div id="mission4.1" class="mission-button">Camp 1</div> <div id="fave4.1" class="fave-button"> </div></ul>
-		<ul><div id="mission4.2" class="mission-button">Camp 2</div> <div id="fave4.2" class="fave-button"> </div></ul>
-		<ul><div id="mission4.3" class="mission-button">Camp 3</div> <div id="fave4.3" class="fave-button"> </div></ul>
-		<ul><div id="mission4.4" class="mission-button">Camp 4</div> <div id="fave4.4" class="fave-button"> </div></ul>
-        </div>
+      <div id="tab-Campuses" class="tab">
+        <ul>
+        </ul>
+      </div>
     </div>
 </div>
 
@@ -54,4 +43,6 @@ jQuery(document).ready(function() {
         e.preventDefault();
     });
 });
+var chest_closed = '<li><div><img src="img/treasure_closed.png"><br><span>title</span></div></li>';
+var chest_opem = '<li><div><img src="img/treasure_open.png"><br><span>title</span></div></li>';
 </script>
