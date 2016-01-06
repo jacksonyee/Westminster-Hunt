@@ -21,7 +21,7 @@
   currentMission = null;
   currentId = null;
   currentLen = null;
-  // get or set a list of done questions in localStorage
+  // get list of done questions from localStorage  or create it
   if (localStorage.getItem('done') == null) {
     doneMissions = {'Campuses' : {},
       'Essentials' : {},
@@ -33,6 +33,18 @@
   }
   else {
     doneMissions = JSON.parse(localStorage.getItem('done'));
+  }
+  // get list of favourites from localStorage or create it
+  if (localStorage.getItem('fav') == null) {
+    favourites = {'Campuses' : {},
+      'Essentials' : {},
+      'People' : {},
+      'Study' : {}
+    };
+    localStorage.setItem('fav', JSON.stringify(favourites));
+  }
+  else {
+    favourites = JSON.parse(localStorage.getItem('fav'));
   }
 
   loadView = function() {
@@ -94,26 +106,6 @@
       }
     });
   };
-
-  /* favourites */
-  if (typeof favourites == "undefined") var favourites = [];
-	else {
-	// check every checkbox with an id saved in favourites
-		for (i=0; i<favourites.length ; i++)
-			$("#" + favourites[i]).prop('checked', true);
-	}
-	$(".checkbox_fav").click(function () {
-		id = $(this).attr("id");
-		index = favourites.indexOf(id);
-		if (index >= 0) {
-			//its in, remove it
-			favourites.splice(index, 1);
-		}
-		else {
-			// not in, add it
-			favourites.push(id);
-		}
-	});
 
   drawChests = function() {
     currentMission = eval("retrievedCategory.questions");

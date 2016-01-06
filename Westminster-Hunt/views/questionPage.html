@@ -24,8 +24,6 @@
   </ul>
 </div>
 
-
-
 <div style="
     position: absolute;
     bottom: 5%;
@@ -71,11 +69,18 @@
     if ($(this).hasClass('fav-btn-false')) {
       // add to favourites
       $(this).removeClass('fav-btn-false').addClass('fav-btn-true');
+      eval('favourites.' + currentCategory + '.' + currentMission + ' = true');
     }
     else if ($(this).hasClass('fav-btn-true')) {
       // remove from favourites
       $(this).removeClass('fav-btn-true').addClass('fav-btn-false');
+      eval('delete favourites.' + currentCategory + '.' + currentMission);
     }
+    saveFav();
   });
+
+  saveFav = function() {
+    localStorage.setItem('fav', JSON.stringify(favourites));
+  };
 /**/
 </script>
