@@ -20,6 +20,19 @@
   currentCategory = null;
   currentMission = null;
   currentId = null;
+  currentLen = null;
+  // get or set a list of done questions in localStorage
+  if (localStorage.getItem('done') == null) {
+    doneMissions = {'Campuses' : {},
+      'Essentials' : {},
+      'People' : {},
+      Study : {}
+    };
+    localStorage.setItem('done', JSON.stringify(doneMissions));
+  }
+  else {
+    doneMissions = JSON.parse(localStorage.getItem('done'));
+  }
 
   // function to dynamically load new pages using AJAX
   loadCategory = function() {
@@ -81,6 +94,7 @@
       // console.log('id ' + $(this).attr('id'));
       currentMission = $(this).attr('id');
       currentId =  1;
+      currentLen = eval('retrievedCategory.questions.' + currentMission + '.noofquestions')
       loadQuestion(currentMission, currentId);
     });
   };
@@ -130,21 +144,28 @@
     // loads question view
     if (mission === undefined) mission = currentMission;
     if (id === undefined || id < 1) id = currentId;
-    $.ajax({
-      url: "views/questionPage.html"
-    })
-    .done(function( dataPage ) {
-      changePageTitle("Question");
-      $('#content-frame').html(dataPage);
-      displayQuestion(mission, id);
-    });
+    if (currentLen != null && currentLen >= id){
+      $.ajax({
+        url: "views/questionPage.html"
+      })
+      .done(function( dataPage ) {
+        changePageTitle("Question");
+        $('#content-frame').html(dataPage);
+        displayQuestion(mission, id);
+      });
+    }
+    else {
+      // end of quiz
+      $('#content-frame').html("END OF QUIZ");
+      setMissionAsDone();
+      unsetGlobalQuizElements();
+    }
   };
 
   displayQuestion = function(mission, id) {
     // populates question view
     if (id < 1) return;
     currentQuestion = eval("retrievedCategory.questions." + mission + '.q' + id);
-    console.log(currentQuestion);
     if (currentQuestion.answersType == 'text'){
       // answers are text
       $('#answers-pic').hide();
@@ -159,7 +180,6 @@
       // answers are images
       $('#answers').remove();
       $("#question").html(currentQuestion.title);
-      console.log(currentQuestion.answers.a);
       // $("#opt-a").css('background', 'url(http://ianfarb.com/wp-content/uploads/2013/10/nicholas-hodag.jpg)');
       $("#opt-a").css('background', 'url(models/' + currentQuestion.answers.a + ')');
       // $("#opt-a").attr('src', 'models/' + currentQuestion.answers.a);
@@ -175,6 +195,19 @@
     setTimeout(function(){
       $('#panelPoints').removeClass('hulk');
     }, 500);
+  };
+
+  setMissionAsDone = function() {
+    // adds the current element as done
+    var mission = eval('doneMissions.' + currentCategory + '.' + currentMission + ' = true');
+    localStorage.setItem('done', JSON.stringify(doneMissions));
+    console.log(doneMissions);
+  };
+  unsetGlobalQuizElements = function() {
+    currentCategory = null;
+    currentMission = null;
+    currentId = null;
+    currentLen = null;
   };
 // end of questions controller
 </script>
