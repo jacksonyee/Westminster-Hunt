@@ -18,79 +18,82 @@
 
 <script>
   currentCategory = null;
+  currentMission = null;
   currentId = null;
-
 
   // function to dynamically load new pages using AJAX
   loadCategory = function() {
-    categoryName = $(this).attr("view");
-    // console.log("c " + categoryName);
-
-    // make element active
+    currentCategory = $(this).attr("view");
+    // make menu element active
     $('.active-btn').addClass('ui-alt-icon').removeClass('active-btn');
     $(this).addClass('active-btn').removeClass('ui-alt-icon');
 
     // loadOff view listeners
 
-    // load ajax
+    // show mission list
     retrievedCategory = null;
-    currentCategory = categoryName;
-    currentId = 1;
     $.ajax({
       url: "views/missionList.html"
     })
     .done(function(data) {
       $('#content-frame').html(data);
-      $('li a[href="#tab-' + categoryName + '"]').click();
+      $('li a[href="#tab-' + currentCategory + '"]').click();
 
-      if (localStorage.getItem(categoryName) == null)
-      {
+      // check if stored in localStorage - so the user can use offline
+      if (localStorage.getItem(currentCategory) == null) {
         $.ajax({
-          url: "models/" + categoryName + ".json"
+          url: "models/" + currentCategory + ".json"
         })
         .done(function( data ) {
-          console.log("data");
-          console.log(data);
           // save JSON as string in localStorage
-          localStorage.setItem(categoryName, JSON.stringify(data));
+          localStorage.setItem(currentCategory, JSON.stringify(data));
           retrievedCategory = data;
           // dynamically create content
-          drawChests(retrievedCategory);
-          // loadQuestion(1, data);
+          drawChests();
         })
-        .error(function(data, categoryName) {
-          var r = jQuery.parseJSON(data.responseText);
-          console.log(r);
-        });
       }
       else {
-        retrievedCategory = JSON.parse(localStorage.getItem(categoryName));
-        console.log("saved");
-        console.log(retrievedCategory);
+        retrievedCategory = JSON.parse(localStorage.getItem(currentCategory));
         // dynamically create content
-        drawChests(retrievedCategory, categoryName);
-        // loadQuestion(currentId, retrievedCategory);
+        drawChests();
       }
     });
   };
 
-  drawChests = function(data, name) {
+  drawChests = function() {
     currentMission = eval("retrievedCategory.questions");
     // console.log(currentMission);
 
     // drawChests
     for(var propName in currentMission) {
-      mission = eval("currentMission." + propName);
-      html = chest_closed;
-      $('#tab-' + name + ' ul').append(html).find('span').last().html('' + mission.title);
+      var mission = eval("currentMission." + propName);
+      var html = chest_closed;
+      $('#tab-' + currentCategory + ' ul').append(html).find('span').last().html('' + mission.title).parent().attr('id', propName);
     }
+
+    // set on click listeners
+    chestAddOnClick();
+  };
+
+  chestAddOnClick = function() {
+    // add listeners to chests
+    $('#tab-' + currentCategory + ' ul li div').click(function() {
+      // console.log('id ' + $(this).attr('id'));
+      currentMission = $(this).attr('id');
+      currentId =  1;
+      loadQuestion(currentMission, currentId);
+    });
+  };
+  chestRemoveOnClick = function() {
+    // remove listeners to chests
+    $('#tab-' + currentCategory + ' ul li div').unbind('click');
   };
 
   loadView = function() {
-    viewName = $(this).attr("view");
-    console.log("v " + viewName);
+    // loads a view
+    var viewName = $(this).attr("view");
 
-    // make element active
+    // make menu element active
     $('.active-btn').addClass('ui-alt-icon').removeClass('active-btn');
     $(this).addClass('active-btn').removeClass('ui-alt-icon');
 
@@ -111,8 +114,8 @@
   $("#nav-buttons tr td").click(loadView);
 
 
-  // loadOff to be run when the view is changed, to shut down listeners
   loadOffPanned = function() {
+    // loadOff to be run when the view is changed, to shut down listeners
     $('#mission-categories li a').unbind();
   };
 
@@ -120,25 +123,27 @@
     $('#title').html(newName);
   }
 
-// should be in questions controller
+// Questions controller
   var correctAnswer = null;
   var userScore = 0;
-  loadQuestion = function(id, retrievedCategory) {
+  loadQuestion = function(mission, id) {
+    // loads question view
+    if (mission === undefined) mission = currentMission;
+    if (id === undefined || id < 1) id = currentId;
     $.ajax({
       url: "views/questionPage.html"
     })
     .done(function( dataPage ) {
       changePageTitle("Question");
       $('#content-frame').html(dataPage);
-      displayQuestion(id, retrievedCategory);
+      displayQuestion(mission, id);
     });
   };
-  displayQuestion = function(id, retrievedCategory) {
-    mod = 1; //awlays int - test
+
+  displayQuestion = function(mission, id) {
+    // populates question view
     if (id < 1) return;
-    // console.log(currentCategory);
-    // console.log(retrievedCategory);
-    currentQuestion = eval("retrievedCategory.questions.m" + mod + '.q' + id);
+    currentQuestion = eval("retrievedCategory.questions." + mission + '.q' + id);
     console.log(currentQuestion);
     if (currentQuestion.answersType == 'text'){
       // answers are text
@@ -162,7 +167,6 @@
       $("#opt-c").attr('src', 'models/' + currentQuestion.answers.a);
       $("#opt-d").attr('src', 'models/' + currentQuestion.answers.a);
       correctAnswer = currentQuestion.correct;
-
     }
   };
   addToScoreAndUpdate = function() {

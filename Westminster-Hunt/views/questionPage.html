@@ -15,7 +15,7 @@
       </td>
     </tr>
   </table>
-  
+
   <ul id="answers-pic">
     <li><div id="opt-a" class="answer-btn"><div id="overlay"></div></div></li>
     <li><img id="opt-b" class="answer-btn"></img></li>
@@ -56,8 +56,7 @@
   });
 
   $("#skip-btn").click(function() {
-    console.log(currentId);
-    loadQuestion(++currentId, JSON.parse(localStorage.getItem(currentCategory)));
+    loadQuestion(currentMission, ++currentId);
   });
 /**/
 </script>
