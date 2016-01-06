@@ -4,4 +4,16 @@
 </div>
 <script>
 	$("#fav-content").html(favourites);
+
+  if (typeof(favourites) == 'object') {
+    var html = "";
+    for(var cat in favourites) {
+      temp_cat = JSON.parse(localStorage.getItem(cat));
+      for(var mission in eval('favourites.' + cat)){
+        var temp = eval('temp_cat.questions.' + mission + '.title');
+        html += "<b>" + cat + "</b> - " + temp + "<br>";
+      }
+    }
+    $("#fav-content").html(html);
+  }
 </script>

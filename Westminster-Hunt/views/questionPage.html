@@ -34,7 +34,7 @@
   <table style="width: 100%; text-align: center;">
     <tbody>
       <tr><td>
-        <div id="fav-btn" class="my-btn fav-btn-false" style="margin: 1em auto;">Favourite</div>
+        <div id="fav-btn" class="my-btn" style="margin: 1em auto;">Favourite</div>
       </td><td>
         <div id="skip-btn" class="my-btn" style="margin: 1em auto;">Skip</div>
 
@@ -42,6 +42,11 @@
 </div>
 
 <script>
+
+  // checks if mission is favourited and applies the right css
+  if (eval('favourites.' + currentCategory + '.' + currentMission)) $('#fav-btn').addClass('fav-btn-true');
+  else $('#fav-btn').addClass('fav-btn-false');
+
   $(".answer-btn").click(function() {
     // TODO tansfer the bg responsive translation in JS or remove it
     if ($(this).attr('id') == "opt-" + correctAnswer) {
@@ -66,6 +71,7 @@
   });
 
   $("#fav-btn").click(function() {
+    // fav on click event
     if ($(this).hasClass('fav-btn-false')) {
       // add to favourites
       $(this).removeClass('fav-btn-false').addClass('fav-btn-true');
@@ -80,6 +86,7 @@
   });
 
   saveFav = function() {
+    // saves favourites to localStorage
     localStorage.setItem('fav', JSON.stringify(favourites));
   };
 /**/
