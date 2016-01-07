@@ -179,6 +179,15 @@ div.answer-btn-active:active{
     -o-transition: all 0.5s linear;
     transition: all 0.5s linear;
 }
+#answers-pic .answer-btn{
+  border: .3em solid transparent;
+}
+#answers-pic .answer-btn.red-bg{
+  border-color: #c92D39;
+}
+#answers-pic .answer-btn.green-bg{
+  border-color: #72cd28;
+}
 
 /*----- Tabs -----*/
 .tabs {

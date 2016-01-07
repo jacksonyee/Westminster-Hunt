@@ -208,11 +208,11 @@
       $('#answers').remove();
       $("#question").html(currentQuestion.title);
       // $("#opt-a").css('background', 'url(http://ianfarb.com/wp-content/uploads/2013/10/nicholas-hodag.jpg)');
-      $("#opt-a").css('background', 'url(models/' + currentQuestion.answers.a + ')');
-      // $("#opt-a").attr('src', 'models/' + currentQuestion.answers.a);
-      $("#opt-b").attr('src', 'models/' + currentQuestion.answers.a);
-      $("#opt-c").attr('src', 'models/' + currentQuestion.answers.a);
-      $("#opt-d").attr('src', 'models/' + currentQuestion.answers.a);
+      // $("#opt-a").css('background', 'url(models/' + currentQuestion.answers.a + ')');
+      $("#opt-a").attr('src', 'models/' + currentQuestion.answers.a);
+      $("#opt-b").attr('src', 'models/' + currentQuestion.answers.b);
+      $("#opt-c").attr('src', 'models/' + currentQuestion.answers.c);
+      $("#opt-d").attr('src', 'models/' + currentQuestion.answers.d);
       correctAnswer = currentQuestion.correct;
     }
   };

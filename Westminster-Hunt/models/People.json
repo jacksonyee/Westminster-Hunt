@@ -21,9 +21,9 @@
         "title": "Select the correct picture of Philip Tworga?",
         "answersType": "image",
         "answers": {
-          "a": "images/people/m1/phild.jpg",
-          "b": "images/people/m1/phild.jpg",
-          "c": "images/people/m1/phild.jpg",
+          "a": "images/people/m1/anneb.jpg",
+          "b": "images/people/m1/Daphne.jpg",
+          "c": "images/people/m1/epi.jpg",
           "d": "images/people/m1/phild.jpg"
         },
         "correct": "d",

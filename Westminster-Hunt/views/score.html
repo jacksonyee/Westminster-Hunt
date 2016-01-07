@@ -13,7 +13,7 @@
     var wrong = eval("doneMissions." + cat + ".wrong");
     // if (correct != undefined && wrong != undefined && (correct != 0))
     if (correct != undefined && wrong != undefined && (correct != 0 || wrong != 0)) {
-      var html = "<h3 style='margin-bottom: 5px'>" + cat + "</h3>" +
+      var html = "<h3 style='margin-bottom: 5px'>Category " + cat + "</h3>" +
             "<i>correct:</i> " + correct + "<br>" +
             "<i>wrong:</i> " + wrong;
       $('#user-score').append(html);
