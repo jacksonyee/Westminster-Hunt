@@ -23,10 +23,10 @@
   currentLen = null;
   // get list of done questions from localStorage  or create it
   if (localStorage.getItem('done') == null) {
-    doneMissions = {'Campuses' : {},
-      'Essentials' : {},
-      'People' : {},
-      'Study' : {},
+    doneMissions = {'Campuses' : {'correct' : 0, 'wrong' : 0},
+      'Essentials' : {'correct' : 0, 'wrong' : 0},
+      'People' : {'correct' : 0, 'wrong' : 0},
+      'Study' : {'correct' : 0, 'wrong' : 0},
       'score' : 0
     };
     localStorage.setItem('done', JSON.stringify(doneMissions));
@@ -143,7 +143,7 @@
 
   // assigning listeners
   $('#mission-categories li a').click(loadCategory);
-  $("#nav-buttons tr td").click(loadView);
+  $("#nav-buttons tr td, #panelScore").click(loadView);
 
 
   loadOffPanned = function() {

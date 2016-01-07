@@ -52,12 +52,14 @@
     if ($(this).attr('id') == "opt-" + correctAnswer) {
       $('#content-frame').append("correct");
       $(this).removeClass('blue-bg').addClass('green-bg');
+      addToStats(true); // add one correct to statistics
       addToScoreAndUpdate();
     }
     else {
       $('#content-frame').append("wrong");
       $(this).removeClass('blue-bg').addClass('red-bg');
       $('#opt-' + correctAnswer).removeClass('blue-bg').addClass('green-bg');
+      addToStats(false); // add one wrong to statistics
     }
     $("#td-points-available").html("");
     $('.answer-btn').unbind('click');
@@ -89,5 +91,25 @@
     // saves favourites to localStorage
     localStorage.setItem('fav', JSON.stringify(favourites));
   };
+
+  var addToStats = function(bool) {
+    console.log('addToStats');
+    if (bool == undefined) return;
+    else if (bool) {
+      // add one to correct
+      console.log('c');
+      var correct = eval('doneMissions.' + currentCategory + '.correct');
+      correct++;
+      eval('doneMissions.' + currentCategory + '.correct = ' + correct);
+    }
+    else {
+    console.log('w');
+      var wrong = eval('doneMissions.' + currentCategory + '.wrong');
+      wrong++;
+      eval('doneMissions.' + currentCategory + '.wrong = ' + wrong);
+    }
+    // don't save, it will be saved at end of mission
+    // localStorage.setItem('done', JSON.stringify(doneMissions));
+  }
 /**/
 </script>
