@@ -47,7 +47,7 @@
 	<div data-role="header" data-position="fixed" data-hide-during-focus="" data-tap-toggle="false">
 		<a href="#defaultpanel" id="defaultpanel-button" class="phone-elem" data-icon="ui-btn ui-icon-myicon" data-iconpos="notext"></a>
 		<h1 class="heading-title" id="title">Westminster Hunt</h1>
-		<a href="#" view="Score" id="panelScore"><span id="panelPoints">0</span><span id="pointsText"> Points</span></a>
+		<a href="#" view="score" id="panelScore"><span id="panelPoints">0</span><span id="pointsText"> Points</span></a>
 	</div><!-- /header -->
 
 	<div data-role="content">
@@ -58,7 +58,7 @@
 	</div><!-- /content -->
 
 	<!-- defaultpanel  -->
-	<div data-role="panel" id="defaultpanel" data-display="reveal" data-position="left" data-theme="a">
+	<div data-role="panel" id="defaultpanel" data-display="reveal" data-position="left" data-theme="b">
   </div><!-- /defaultpanel -->
 
 </div><!-- /page Initial -->
@@ -91,10 +91,9 @@
 	console.log(width);
 	$('#test').click( function() {
 		$.ajax({
-			url: "views/missionList.html"
+			url: "views/missionx.html"
 		})
 		.done(function( data ) {
-			//changePageTitle("Mission List");
 			$('#content-frame').html(data);
 		});
 	});
