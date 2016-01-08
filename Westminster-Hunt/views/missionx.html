@@ -1,0 +1,235 @@
+<div class="tabs" id="mission-categories" class="ui-nodisc-icon">
+    <ul class="tab-links">
+    	<li><a href="#" view="Campuses">Campuses</a></li>
+  		<li><a href="#" view="Essentials">Essentials</a></li>
+  		<li><a href="#" view="People">Peaple</a></li>
+  		<li><a href="#" view="Study">Study</a></li>
+    </ul>
+</div>
+
+
+<script>
+  currentCategory = null;
+  currentMission = null;
+  currentId = null;
+  currentLen = null;
+  // get list of done questions from localStorage  or create it
+  if (localStorage.getItem('done') == null) {
+    doneMissions = {'Campuses' : {'correct' : 0, 'wrong' : 0},
+      'Essentials' : {'correct' : 0, 'wrong' : 0},
+      'People' : {'correct' : 0, 'wrong' : 0},
+      'Study' : {'correct' : 0, 'wrong' : 0},
+      'score' : 0
+    };
+    localStorage.setItem('done', JSON.stringify(doneMissions));
+  }
+  else {
+    doneMissions = JSON.parse(localStorage.getItem('done'));
+  }
+  // get list of favourites from localStorage or create it
+  if (localStorage.getItem('fav') == null) {
+    favourites = {'Campuses' : {},
+      'Essentials' : {},
+      'People' : {},
+      'Study' : {}
+    };
+    localStorage.setItem('fav', JSON.stringify(favourites));
+  }
+  else {
+    favourites = JSON.parse(localStorage.getItem('fav'));
+  }
+
+  loadView = function() {
+    // loads a view
+    var viewName = $(this).attr("view");
+
+    // make menu element active
+    $('.active-btn').addClass('ui-alt-icon').removeClass('active-btn');
+    $(this).addClass('active-btn').removeClass('ui-alt-icon');
+
+    // loadOff view listeners
+
+    // load ajax;
+    $.ajax({
+      url: "views/" + viewName + ".html"
+    })
+    .done(function( data ) {
+      if (viewName == 'Fav') viewName = 'Favourites';
+      changePageTitle(viewName);
+      $('#content-frame').html(data);
+    });
+  };
+
+  // function to dynamically load new pages using AJAX
+  loadCategory = function() {
+    currentCategory = $(this).attr("view");
+    // make menu element active
+    $('.active-btn').addClass('ui-alt-icon').removeClass('active-btn');
+    $(this).addClass('active-btn').removeClass('ui-alt-icon');
+
+    // loadOff view listeners
+
+    // show mission list
+    retrievedCategory = null;
+    $.ajax({
+      url: "views/missionList.html"
+    })
+    .done(function(data) {
+      $('#content-frame').html(data);
+      $('li a[href="#tab-' + currentCategory + '"]').click();
+
+      // check if stored in localStorage - so the user can use offline
+      if (localStorage.getItem(currentCategory) == null) {
+        $.ajax({
+          url: "models/" + currentCategory + ".json"
+        })
+        .done(function( data ) {
+          // save JSON as string in localStorage
+          localStorage.setItem(currentCategory, JSON.stringify(data));
+          retrievedCategory = data;
+          // dynamically create content
+          drawChests();
+        })
+      }
+      else {
+        retrievedCategory = JSON.parse(localStorage.getItem(currentCategory));
+        // dynamically create content
+        drawChests();
+      }
+    });
+  };
+
+  drawChests = function() {
+    currentMission = eval("retrievedCategory.questions");
+    // console.log(currentMission);
+
+    // drawChests
+    for(var propName in currentMission) {
+      var mission = eval("currentMission." + propName);
+      if (eval("doneMissions." + currentCategory + "."+ propName)) var html = chest_open;
+      else var html = chest_closed;
+      $('#tab-' + currentCategory + ' ul').append(html).find('span').last().html('' + mission.title).parent().attr('id', propName);
+    }
+
+    // set on click listeners
+    chestAddOnClick();
+  };
+
+  chestAddOnClick = function() {
+    // add listeners to chests
+    $('#tab-' + currentCategory + ' ul li div.closed').click(function() {
+      // console.log('id ' + $(this).attr('id'));
+      currentMission = $(this).attr('id');
+      currentId =  1;
+      currentLen = eval('retrievedCategory.questions.' + currentMission + '.noofquestions')
+      loadQuestion(currentMission, currentId);
+    });
+    $('#tab-' + currentCategory + ' ul li div.open').click(function() {
+      console.log('done chest');
+    });
+  };
+  chestRemoveOnClick = function() {
+    // remove listeners to chests
+    $('#tab-' + currentCategory + ' ul li div').unbind('click');
+  };
+
+  // assigning listeners
+  $('#mission-categories li a').click(loadCategory);
+  $("#nav-buttons tr td, #panelScore").click(loadView);
+
+
+  loadOffPanned = function() {
+    // loadOff to be run when the view is changed, to shut down listeners
+    $('#mission-categories li a').unbind();
+  };
+
+  changePageTitle = function(newName) {
+    $('#title').html(newName);
+  }
+
+// Questions controller
+  var correctAnswer = null;
+  var userScore = doneMissions.score;
+  if (userScore > 0) $('#panelPoints').html(userScore);
+
+  loadQuestion = function(mission, id) {
+    // loads question view
+    if (mission === undefined) mission = currentMission;
+    if (id === undefined || id < 1) id = currentId;
+    if (currentLen != null && currentLen >= id){
+      $.ajax({
+        url: "views/questionPage.html"
+      })
+      .done(function( dataPage ) {
+        changePageTitle("Question");
+        $('#content-frame').html(dataPage);
+        displayQuestion(mission, id);
+      });
+    }
+    else {
+      // end of quiz
+      $('#content-frame').html("END OF QUIZ");
+      setMissionAsDone();
+      unsetGlobalQuizElements();
+    }
+  };
+
+  displayQuestion = function(mission, id) {
+    // populates question view
+    if (id < 1) return;
+    currentQuestion = eval("retrievedCategory.questions." + mission + '.q' + id);
+    if (currentQuestion.answersType == 'text'){
+      // answers are text
+      $('#answers-pic').hide();
+      $("#question").html(currentQuestion.title);
+      if (currentQuestion.answers.a) $("#opt-a").html(currentQuestion.answers.a);
+      else $("#opt-a").hide();
+      if (currentQuestion.answers.b) $("#opt-b").html(currentQuestion.answers.b);
+      else $("#opt-b").hide();
+      if (currentQuestion.answers.c) $("#opt-c").html(currentQuestion.answers.c);
+      else $("#opt-c").hide();
+      if (currentQuestion.answers.d) $("#opt-d").html(currentQuestion.answers.d);
+      else $("#opt-d").hide();
+      // $("#opt-b").html(currentQuestion.answers.b);
+      // $("#opt-c").html(currentQuestion.answers.c);
+      // $("#opt-d").html(currentQuestion.answers.d);
+      correctAnswer = currentQuestion.correct;
+    }
+    else if (currentQuestion.answersType == 'image') {
+      // answers are images
+      $('#answers').remove();
+      $("#question").html(currentQuestion.title);
+      // $("#opt-a").css('background', 'url(http://ianfarb.com/wp-content/uploads/2013/10/nicholas-hodag.jpg)');
+      // $("#opt-a").css('background', 'url(models/' + currentQuestion.answers.a + ')');
+      $("#opt-a").attr('src', 'models/' + currentQuestion.answers.a);
+      $("#opt-b").attr('src', 'models/' + currentQuestion.answers.b);
+      $("#opt-c").attr('src', 'models/' + currentQuestion.answers.c);
+      $("#opt-d").attr('src', 'models/' + currentQuestion.answers.d);
+      correctAnswer = currentQuestion.correct;
+    }
+  };
+  addToScoreAndUpdate = function() {
+    // not used
+    userScore += 10;
+    $('#panelPoints').html(userScore).addClass('hulk');
+    setTimeout(function(){
+      $('#panelPoints').removeClass('hulk');
+    }, 500);
+  };
+
+  setMissionAsDone = function() {
+    // adds the current element as done
+    var mission = eval('doneMissions.' + currentCategory + '.' + currentMission + ' = true');
+    // update score
+    doneMissions.score = userScore;
+    localStorage.setItem('done', JSON.stringify(doneMissions));
+    console.log(doneMissions);
+  };
+  unsetGlobalQuizElements = function() {
+    currentCategory = null;
+    currentMission = null;
+    currentId = null;
+    currentLen = null;
+  };
+// end of questions controller
+</script>
